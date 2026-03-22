@@ -98,7 +98,7 @@ export const RallyRegistrationForm = () => {
           });
         }
       }
-    } catch (error) {
+    } catch {
       setErrors({
         email: "Wystąpił błąd podczas wysyłania formularza",
       });
