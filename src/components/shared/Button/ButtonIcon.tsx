@@ -1,3 +1,4 @@
+import type { ElementType } from "react";
 import { IconAward } from "@/icons/IconAward";
 import { IconCheckSquare } from "@/icons/IconCheckSquare";
 import { IconCoffee } from "@/icons/IconCoffee";
@@ -11,7 +12,7 @@ import { IconTarget } from "@/icons/IconTarget";
 import { IconMapPin } from "@/icons/IconMapPin";
 import { type IconProps } from "@/types";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, ElementType> = {
   award: IconAward,
   check: IconCheckSquare,
   coffee: IconCoffee,
@@ -25,13 +26,12 @@ const iconMap: Record<string, React.ElementType> = {
   target: IconTarget,
 };
 
-export default function ButtonIcon({
-  name,
-  className,
-}: IconProps): JSX.Element {
+export default function ButtonIcon({ name, className }: IconProps) {
   const IconComponent = iconMap[name];
+
   if (!IconComponent) {
-    return <></>;
+    return null;
   }
+
   return <IconComponent className={className} aria-hidden="true" />;
 }

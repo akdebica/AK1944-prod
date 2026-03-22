@@ -1,6 +1,6 @@
 import { DefaultIconProps } from "@/types";
 
-export function IconChevronDown({ className }: DefaultIconProps): JSX.Element {
+export function IconChevronDown({ className }: DefaultIconProps) {
   return (
     <svg
       className={className}

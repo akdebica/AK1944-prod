@@ -2,7 +2,7 @@ import { DefaultIconProps } from "@/types";
 
 export default function IconArrowVertical({
   className,
-}: DefaultIconProps): JSX.Element {
+}: DefaultIconProps){
   return (
     <svg
       className={className}
