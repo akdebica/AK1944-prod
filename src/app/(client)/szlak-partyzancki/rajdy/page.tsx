@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { mainTextFirst, mainTextTwo } from "./data/rallyTextData";
 import { RallyList } from "./_components/RallyList";
 import { SearchParamsProps } from "@/types";
+import { Routes } from "@/routes";
 
 export default function RalliesPage({ searchParams }: SearchParamsProps) {
   const params = React.use(searchParams);
@@ -27,10 +28,9 @@ export default function RalliesPage({ searchParams }: SearchParamsProps) {
         <p className="py-3 font-sourceSans text-18">{mainTextTwo}</p>
         <Button
           label="Zapisz się na rajd"
-          href={""}
+          href={Routes.SIGN_TO_RALLY}
           ariaDescription="Zapisz się na rajd"
           variant="primary"
-          disabled
         />
         <Suspense fallback={<p>Ładowanie listy rajdów...</p>}>
           <RallyList currentPage={currentPage} />

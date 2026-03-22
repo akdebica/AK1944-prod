@@ -12,6 +12,13 @@ export const FooterLegalInfo = () => (
       </ActiveLink>
 
       <ActiveLink
+        href={Routes.COOKIES}
+        aria-label="Przejdź do strony Polityka cookies"
+      >
+        Polityka cookies
+      </ActiveLink>
+
+      <ActiveLink
         href={Routes.REGULATIONS}
         aria-label="Przejdź do strony Regulamin"
       >
