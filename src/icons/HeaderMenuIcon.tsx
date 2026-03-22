@@ -1,8 +1,6 @@
 import { DefaultIconProps } from "@/types";
 
-export default function HeaderMenuIcon({
-  className,
-}: DefaultIconProps): JSX.Element {
+export default function HeaderMenuIcon({ className }: DefaultIconProps) {
   return (
     <svg
       width="24"
