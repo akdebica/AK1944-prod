@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { Button } from "@/components/shared/Button/Button";
 
 interface Props {
   label: string;
-  icon: JSX.Element;
+  icon: ReactNode;
   href: string;
 }
 
