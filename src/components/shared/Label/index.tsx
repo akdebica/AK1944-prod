@@ -4,6 +4,7 @@ import { cn } from "@/utils";
 const labelVariants = {
   primary: "text-textDarkGreen",
   error: "text-redError",
+  light: "text-white",
 } as const;
 
 const labelVisibility = {

@@ -9,7 +9,7 @@ export const CardHeader = ({ children }: Props) => (
     variant="h4"
     color="green"
     contrast="yellow"
-    className="font-sourceSans text-base font-semibold tablet:text-20 desktop:font-lora desktop:text-28 desktop:font-bold"
+    className="font-sourceSans text-base font-semibold tablet:text-20 desktop:font-lora desktop:text-28 desktop:font-bold text-center"
   >
     {children}
   </Heading>

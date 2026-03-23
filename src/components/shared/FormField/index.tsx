@@ -6,9 +6,10 @@ import { Label } from "../Label";
 interface Props extends InputProps {
   label?: string;
   issues?: string[];
+  lightMode?: boolean;
 }
 
-export const FormField = ({ issues, name, id, label, ...rest }: Props) => {
+export const FormField = ({ issues, name, id, label, lightMode = false, ...rest }: Props) => {
   const inputId = id || `field-${name}`;
   const errorId = `${name}-error`;
   const hasIssues = !!issues?.length;
@@ -17,7 +18,7 @@ export const FormField = ({ issues, name, id, label, ...rest }: Props) => {
     <div className="w-full space-y-1">
       <Label
         htmlFor={inputId}
-        color={hasIssues ? "error" : "primary"}
+        color={hasIssues ? "error" : lightMode ? "light" : "primary"}
         className="capitalize"
       >
         {label || name}

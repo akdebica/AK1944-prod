@@ -3,6 +3,7 @@ import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import { TaxCard } from "@/components/shared/TaxCard/TaxCard";
+import { RallyCard } from "@/components/shared/RallyCard/RallyCard";
 import { ContactInfo } from "./components/ContactInfo";
 import { LegalInfo } from "./components/LegalInfo";
 import { BackgroundImage } from "@/components/shared/BackgroundImage/BackgroundImage";
@@ -89,8 +90,9 @@ export default function ContactPage() {
 
           <LegalInfo />
         </div>
-        <div className="mt-[2.5rem] tablet:hidden desktop:flex desktop:max-w-[55%] desktop:justify-start">
+        <div className="mt-[2.5rem] flex flex-col gap-6 pb-10 tablet:hidden desktop:flex desktop:max-w-[55%] desktop:flex-row desktop:gap-6 desktop:justify-start">
           <TaxCard />
+          <RallyCard />
         </div>
 
         <section className="mb-[2.5rem] hidden text-left tablet:block desktop:hidden">
