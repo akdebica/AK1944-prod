@@ -14,7 +14,7 @@ export const BiogramHistory = ({ biogram }: BiogramHistoryProps) => {
     <>
       <BackgroundImage
         alt=""
-        src="/images/history/main/bg_card.png"
+        src="/images/history/main/paper.png"
         width="768"
         height="948"
         className="absolute object-fill contrast:hidden"
