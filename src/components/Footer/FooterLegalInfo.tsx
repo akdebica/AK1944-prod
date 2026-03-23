@@ -31,6 +31,7 @@ export const FooterLegalInfo = () => (
     <ActiveLink
       href={Routes.VOLUNTEERS}
       aria-label="Przejdź do strony Wolontariuszy"
+      className="w-fit self-center font-medium underline"
     >
       Strona powstała dzięki pracy wolontariuszy.
     </ActiveLink>
