@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import ThemeProvider from "@/context/ThemesProvider";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
+import { CookieBanner } from "@/components/CookieBanner/CookieBanner";
 import { cn } from "@/utils";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
+            <CookieBanner />
           </ThemeProvider>
         </div>
         <Analytics />
