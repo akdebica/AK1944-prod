@@ -25,7 +25,7 @@ export const data: Book[] = [
     isbn: "83-921333-0-7",
     format: "15x21.5cm",
     cover: "Twarda",
-    img: "/images/placeholder_image.png",
+    img: "/images/dziesitka-w-akcji.jpeg",
     edition: "II Dębica, 2004r.",
     language: "Polski",
     numberOfPages: 280,
