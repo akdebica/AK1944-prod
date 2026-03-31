@@ -140,18 +140,14 @@ export const Breadcrumbs = ({
         {pathSegments.map((_, index) => {
           const previousPath = generatePreviousPath(index);
           if (previousPath === "/") return null;
+          if (previousPath.endsWith('/relacja')) return null;
           return (
             <li
               key={index}
               className="flex h-full flex-row items-center justify-center text-14 capitalize leading-4 tablet:text-18"
             >
               <Link
-                href={
-                  previousPath === "/zwiazek" ||
-                  previousPath === "/szlak-partyzancki"
-                    ? "/"
-                    : previousPath
-                }
+                href={previousPath === "/zwiazek" ? "/" : previousPath}
                 className={clsx(
                   getTextColor(color, contrastVariant),
                   "flex items-center justify-center gap-2",

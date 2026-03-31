@@ -3,6 +3,7 @@ import { Button } from "@/components/shared/Button/Button";
 import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
 import { IconName } from "@/types";
+import { Routes } from "@/routes";
 import { SectionList } from "./SectionList";
 import { RallyData } from "../_models/rallyData";
 import { buttons } from "../data/buttonsData";
@@ -46,11 +47,10 @@ export const ParticipationRules = ({ rally }: RulesProps) => {
           ))}
           <Button
             label="Zapisz się na rajd"
-            href={""}
+            href={Routes.SIGN_TO_RALLY}
             iconName="send"
             ariaDescription="Zapisz się na rajd"
             variant="primaryBlue"
-            disabled
           />
         </div>
 
@@ -67,11 +67,10 @@ export const ParticipationRules = ({ rally }: RulesProps) => {
 
         <Button
           label="Zapisz się na rajd"
-          href={""}
+          href={Routes.SIGN_TO_RALLY}
           ariaDescription="Zapisz się na rajd"
           variant="primaryBlue"
           className="mx-auto tablet:mx-0"
-          disabled
         />
       </Container>
     </div>
