@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import Container from "@/components/shared/Container";
 import { Article } from "./_components/Article";
@@ -12,14 +12,23 @@ import { TrailSwitcher } from "./_components/TrailSwitcher";
 import { TrailPoints } from "./_components/TrailPoints";
 
 export default function PartisanTrailPage() {
-  const [activeTrail, setActiveTrail] = useState<TrailSlug>("first");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  
+  const activeTrail = (searchParams.get("szlak") as TrailSlug) || "1";
   const trailData = trails[activeTrail];
+
+  const handleTrailChange = (newTrail: TrailSlug) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("szlak", newTrail);
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <main className="tablet:pb-20 desktop:pb-150">
       <Container as="section">
         <Breadcrumbs />
-        <TrailSwitcher active={activeTrail} onChange={setActiveTrail} />
+        <TrailSwitcher active={activeTrail} onChange={handleTrailChange} />
         <Article
           paragraphs={trailData.paragraphs}
           displayName={trailData.displayName}

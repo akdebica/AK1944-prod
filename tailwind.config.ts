@@ -66,6 +66,7 @@ export default {
         mobile: "320px",
         tablet: "768px",
         desktop: "1280px",
+        largeDesktop: "2500px",
       },
       spacing: {
         "150": "150px",

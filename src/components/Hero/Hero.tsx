@@ -29,7 +29,7 @@ export const Hero = () => (
         >
           Środowisko 5. Pułku Strzelców Konnych Armii Krajowej w Dębicy
         </Heading>
-        <LogoAK className="mt-40 h-[32px] w-[88px] opacity-[33%] tablet:mt-44 desktop:mt-48" />
+        <LogoAK className="mt-2 h-[32px] w-[88px] opacity-[33%] tablet:mt-44 desktop:mt-48" />
       </Container>
     </BackgroundImage>
   </section>
