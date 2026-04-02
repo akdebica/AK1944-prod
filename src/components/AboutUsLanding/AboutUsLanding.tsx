@@ -10,7 +10,7 @@ export const AboutUsLanding = () => (
       <Heading color="green" contrast="yellow" underline>
         O nas
       </Heading>
-      <p className="text-base tablet:text-center desktop:pb-4">
+      <p className="text-base desktop:text-18 tablet:text-center desktop:pb-4 font-sourceSans">
         Światowy Związek Żołnierzy Armii Krajowej (ŚZŻAK) to organizacja
         skupiająca byłych żołnierzy Armii Krajowej oraz ich sympatyków. Powstała
         w 1990 roku i ma na celu upamiętnienie dziedzictwa AK, ochronę dobrego

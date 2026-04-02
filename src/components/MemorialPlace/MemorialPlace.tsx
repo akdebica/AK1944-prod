@@ -42,7 +42,7 @@ export const MemorialPlace = ({ place }: { place: PlaceDetails }) => (
       >
         {place.name}
       </Heading>
-      <div className="desktop:grid desktop:grid-cols-2 desktop:gap-6">
+      <div className="desktop:grid desktop:grid-cols-[1.1fr_0.9fr] desktop:gap-6">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-textLightGreen">
             <IconMapPin className="size-4" aria-hidden="true" />
@@ -60,7 +60,7 @@ export const MemorialPlace = ({ place }: { place: PlaceDetails }) => (
           </p>
         </div>
         {/* BUTTON (DESKTOP ONLY) */}
-        <div className="mt-4 hidden desktop:flex desktop:items-start desktop:justify-center">
+        <div className="mt-4 hidden desktop:flex desktop:items-center desktop:justify-center">
           <Button
             label="Czytaj więcej"
             variant="secondary"
