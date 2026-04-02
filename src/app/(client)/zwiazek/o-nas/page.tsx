@@ -12,6 +12,7 @@ export default function AboutUsPage() {
           alt="AboutUs Background"
           fill
           priority
+          quality={100}
           className="object-cover object-center contrast:hidden tablet:object-[80%]"
         />
         <Container className="relative z-10 flex h-full flex-col items-start justify-center tablet:px-10 tablet:py-10 desktop:py-40 desktop:pl-24">

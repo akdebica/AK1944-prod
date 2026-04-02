@@ -147,7 +147,7 @@ export const Breadcrumbs = ({
               className="flex h-full flex-row items-center justify-center text-14 capitalize leading-4 tablet:text-18"
             >
               <Link
-                href={previousPath === "/zwiazek" ? "/" : previousPath}
+                href={previousPath === "/zwiazek" ? "/zwiazek/o-nas" : previousPath}
                 className={clsx(
                   getTextColor(color, contrastVariant),
                   "flex items-center justify-center gap-2",

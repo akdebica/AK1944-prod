@@ -19,7 +19,7 @@ const AboutUsLandingCard = ({
   href,
 }: AboutUsLandingCardProps) => {
   return (
-    <Container className="flex w-[320px] flex-col items-center gap-6 rounded bg-greenMain py-5 contrast:bg-yellowContrast tablet:w-[395px] tablet:flex-shrink-0 tablet:snap-start tablet:gap-3 tablet:px-6 desktop:snap-none">
+    <Container className="flex w-[320px] flex-col items-center gap-6 rounded bg-greenMain py-5 tablet:w-[395px] tablet:flex-shrink-0 tablet:snap-start tablet:gap-3 tablet:px-6 desktop:snap-none">
       <Image
         src={image.src}
         alt={image.alt}
@@ -29,17 +29,17 @@ const AboutUsLandingCard = ({
       />
       <Heading
         color="white"
-        contrast="black"
+        contrast="yellow"
         variant="h3"
         className="self-start"
       >
         {heading}
       </Heading>
-      <p className="text-white contrast:text-black tablet:mb-1">
+      <p className="text-white contrast:text-yellowContrast tablet:mb-1">
         {description}
       </p>
       <Button
-        variant="primaryBlue"
+        variant="primary"
         label={buttonLabel}
         ariaDescription={buttonLabel}
         href={href}
