@@ -34,11 +34,6 @@ export const Posts: CollectionConfig = {
     {
       name: 'publishedAt',
       type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-      },
     },
     {
       name: 'legacyId',
@@ -51,6 +46,20 @@ export const Posts: CollectionConfig = {
       name: 'createGallery',
       type: 'checkbox',
       defaultValue: false,
+    },
+    {
+      name: 'galleryTitle',
+      type: 'text',
+      admin: {
+        condition: (_, siblingData) => Boolean(siblingData?.createGallery),
+      },
+    },
+    {
+      name: 'gallerySlug',
+      type: 'text',
+      admin: {
+        condition: (_, siblingData) => Boolean(siblingData?.createGallery),
+      },
     },
     {
       name: 'galleryImages',
@@ -70,6 +79,15 @@ export const Posts: CollectionConfig = {
           type: 'text',
         },
       ],
+    },
+    {
+      name: 'linkedGallery',
+      type: 'relationship',
+      relationTo: 'galleries',
+      admin: {
+        readOnly: true,
+        condition: (_, siblingData) => Boolean(siblingData?.createGallery),
+      },
     },
   ],
 }

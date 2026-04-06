@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    posts: Post;
+    galleries: Gallery;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +80,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    galleries: GalleriesSelect<false> | GalleriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -163,6 +167,70 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  featuredImage?: (string | null) | Media;
+  publishedAt?: string | null;
+  legacyId?: string | null;
+  createGallery?: boolean | null;
+  galleryTitle?: string | null;
+  gallerySlug?: string | null;
+  galleryImages?:
+    | {
+        image: string | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  linkedGallery?: (string | null) | Gallery;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleries".
+ */
+export interface Gallery {
+  id: string;
+  title: string;
+  slug: string;
+  description?: string | null;
+  coverImage?: (string | null) | Media;
+  sourceType: 'manual' | 'post';
+  sourcePost?: (string | null) | Post;
+  images?:
+    | {
+        image: string | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +260,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: string | Post;
+      } | null)
+    | ({
+        relationTo: 'galleries';
+        value: string | Gallery;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -274,6 +350,54 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  content?: T;
+  featuredImage?: T;
+  publishedAt?: T;
+  legacyId?: T;
+  createGallery?: T;
+  galleryTitle?: T;
+  gallerySlug?: T;
+  galleryImages?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  linkedGallery?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleries_select".
+ */
+export interface GalleriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  coverImage?: T;
+  sourceType?: T;
+  sourcePost?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
