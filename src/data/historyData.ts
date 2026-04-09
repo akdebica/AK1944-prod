@@ -313,7 +313,7 @@ export const footnotesSection = {
 } as const;
 
 export const fortressSection = {
-  fortressTitle: "Obwód SZP-ZWZ-AK Dębica - Twierdza Polskiego Podziemia",
+  fortressTitle: "Obwód SZP-ZWZ-AK Dębica - twierdza polskiego podziemia",
   content: [
     "Na tle Polskiego Podziemia szczególną rolę odegrał Obwod SZP - ZWZ - AK Dębica krypt. „Dziekania”, „Deser”, odnosząc sukcesy m.in. na płaszczyźnie sabotażowo-dywersyjnej oraz wywiadowczej. Kiedy trwały jeszcze walki polskich armii z Niemcami m.in. pod Kockiem, w twierdzy Modlin oraz w Warszawie, 27 września 1939 roku powstała w stolicy tajna organizacja pn. Służba Zwycięstwu Polski (SZP), na czele której stanął gen. Michał Karaszewicz-Tokarzewski. Jej zadaniem było „prowadzenie dalszej walki o utrzymanie niepodległości i całości granic”.",
     "Pod koniec września i z początkiem października w rodzinne strony zaczęli powracać żołnierze polskich formacji walczących z Niemcami, którym udało się uniknąć niemieckiej bądź sowieckiej niewoli. To oni mieli stanowić elitę tworzącego się polskiego podziemia niepodległościowego.",
@@ -322,7 +322,7 @@ export const fortressSection = {
 
 export const beginningsSection = {
   beginningsTitle:
-    "Kształtowanie się Obwodu ZWZ Dębica - Bohaterstwo i Determinacja",
+    "Kształtowanie się Obwodu ZWZ Dębica - bohaterstwo i determinacja",
   content: [
     "Powstający Obwód ZWZ Dębica, w kwietniu 1940 roku, został dotknięty falą aresztowań. W wyniku rozpracowania struktur rzeszowskich ZWZ aresztowano członków Komendy Obwodu Dębica: Jana Artura Towarnickiego „Tura”, Mariana Skwiruta „Szpaka” oraz Piotra Klamuta „Pietrzaka”. Wszystkich przewieziono do Rzeszowa, gdzie przeszli ciężkie śledztwo nie ujawniając przed okupantem żadnych kontaktów oraz zachowując bohaterską postawę. W więzieniu zastrzelony został Towarnicki.",
     "Wobec zaistniałej sytuacji Komenda Okręgu, nie znając bliżej realiów lokalnych, poleciła organizację obwodu kpt. Dąbrowskiemu z Krakowa, mianując go następcą Towarnickiego na stanowisku komendanta. Z uwagi na brak kontaktów w lokalnym środowisku, bliżej nieznany w Dębicy kpt. Dąbrowski musiał zrezygnować z pełnienia funkcji. Wówczas z rekomendacji Mieczysława Rakoczego „Soplicy” komendantem został Antoni Cwen „Maszynowski”.",
@@ -386,7 +386,7 @@ export const placesSection = {
 } as const;
 
 export const readinessSection = {
-  readinessTitle: "Siła i Gotowość do Walki",
+  readinessTitle: "Siła i gotowość do walki",
   content: [
     "Obwód ZWZ-AK Dębica, funkcjonujący w granicach przedwojennego powiatu dębickiego, wyrósł do rangi najsilniejszego i najlepiej przygotowanego do akcji „Burza” spośród wszystkich obwodów w rzeszowskim Inspektoracie AK. W dowód uznania 1 stycznia 1944 roku otrzymał z rąk inspektora rejonowego Łukasza Cieplińskiego „Pługa” przechodni sztandar inspektoratu. Złożyło się na to wiele czynników. Najważniejsze z nich to: patriotyczna postawa mieszkańców regionu, właściwy dobór kadry na poszczególnych szczeblach organizacyjnych oraz zaangażowanie i zapał do pracy konspiracyjnej widoczny szczególnie wśród najmłodszych członków organizacji. W okresie bezpośrednio poprzedzającym „Burzę” obwód odebrał dwa zrzuty broni.",
     "Pierwszy, w nocy z 31 maja na 1 czerwca 1944 roku na placówce „Raszka I” w rejonie Niedźwiady i Małej oraz drugi, w nocy z 30 na 31 lipca 1944 (już w czasie „Burzy”) na placówce „Papuga II” w rejonie Starej Jastrząbki. Jak podaje Antoni Stańko, ogółem w chwili przystąpienia do „Burzy” (licząc broń zrzutową z placówki „Papuga II”), obwód dysponował liczbą około 1500 sztuk broni, 4650 sztuk granatów oraz około 160 000 sztuk amunicji różnego kalibru. W 1943 roku przystąpiono do finalizacji akcji scaleniowej. W sierpniu 1943 r. do Armii Krajowej wstąpiły oddziały Narodowej Organizacji Wojskowej w liczbie blisko 150 osób. Jeden pluton włączony został do Obwodu AK Tarnów i brał udział w akcji „Burza” w I Batalionie 16. PP AK „Barbara” na ziemi tarnowskiej.",

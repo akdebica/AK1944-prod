@@ -1,4 +1,4 @@
-import { BackgroundImage } from "@/components/shared/BackgroundImage/BackgroundImage";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import { Heading } from "@/components/shared/Heading/Heading";
 import Container from "@/components/shared/Container";
@@ -6,14 +6,16 @@ import Container from "@/components/shared/Container";
 export default function AboutUsPage() {
   return (
     <section>
-      <BackgroundImage
-        src="/images/become_donor_bg_1.webp"
-        alt="AboutUs BackgroundImage"
-        fill
-        priority
-        className="h-full object-center-100 contrast:hidden tablet:object-[80%]"
-      >
-        <Container className="flex flex-col items-start justify-center tablet:px-10 tablet:py-10 desktop:py-40 desktop:pl-24">
+      <div className="relative h-full w-full overflow-hidden largeDesktop:h-[1600px]">
+        <Image
+          src="/images/become_donor_bg_1.webp"
+          alt="AboutUs Background"
+          fill
+          priority
+          quality={100}
+          className="object-cover object-center contrast:hidden tablet:object-[80%]"
+        />
+        <Container className="relative z-10 flex h-full flex-col items-start justify-center tablet:px-10 tablet:py-10 desktop:py-40 desktop:pl-24">
           <Breadcrumbs color="white" />
 
           <Heading
@@ -43,7 +45,7 @@ export default function AboutUsPage() {
             </div>
           </article>
         </Container>
-      </BackgroundImage>
+      </div>
 
       <Container className="mt-5 flex flex-col items-center justify-center gap-6 pb-10 text-16 text-textDarkGreen tablet:hidden tablet:text-18 desktop:text-justify">
         <AboutUs />

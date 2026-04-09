@@ -1,4 +1,3 @@
-import "./globals.css";
 import { Routes } from "@/routes";
 import { Button } from "@/components/shared/Button/Button";
 import { NotFoundIcon } from "@/icons/NotFoundIcon";
