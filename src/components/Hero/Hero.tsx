@@ -14,6 +14,7 @@ export const Hero = () => (
     >
       <Container className="mx-auto flex h-full flex-col items-center justify-center gap-6 pb-5 pt-20 text-center text-white tablet:pt-32 desktop:pt-28">
         <Heading
+          variant="h1"
           contrast="yellow"
           color="white"
           underline
