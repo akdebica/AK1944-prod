@@ -18,7 +18,7 @@ export const BookDetails = (book: Book) => (
       <li>Język: {book.language}</li>
       <li className="relative flex aspect-square w-64 items-center justify-center">
         <Image
-          src={book.img ? book.img : "/images/placeholder_image.png"}
+          src={book.img ? book.img : "/images/placeholder_image.webp"}
           alt={
             book.img
               ? `Okładka książki ${book.title} autorstwa ${book.autor}`

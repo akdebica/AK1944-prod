@@ -5,7 +5,7 @@ export const people = [
     slug: "kloc-leon",
     birthDate: "04.10.1907",
     deathDate: "18.04.1966",
-    imageUrl: "/images/biogramy/kloc_leon.png",
+    imageUrl: "/images/biogramy/kloc_leon.webp",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const people = [
     slug: "stawicka-marta",
     birthDate: "06.10.1920",
     deathDate: "20.04.2017",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const people = [
     slug: "galazka-jan",
     birthDate: "12.04.1923",
     deathDate: "05.01.1996",
-    imageUrl: "/images/biogramy/galazka_jan.png",
+    imageUrl: "/images/biogramy/galazka_jan.webp",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const people = [
     slug: "wiecek-marian",
     birthDate: "20.02.1924",
     deathDate: "21.12.2006",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const people = [
     slug: "szlachta-emilia",
     birthDate: "",
     deathDate: "27.08.2014",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const people = [
     slug: "skorka-bronislawa",
     birthDate: "15.02.1924",
     deathDate: "",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const people = [
     slug: "grzebyk-maria",
     birthDate: "03.12.1923",
     deathDate: "25.11.2017",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ export const people = [
     slug: "lazarowicz-zbigniew",
     birthDate: "27.09.1925",
     deathDate: "29.09.2017",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 9,
@@ -69,6 +69,6 @@ export const people = [
     slug: "pietrzyk-tadeusz",
     birthDate: "10.02.1924",
     deathDate: "25.12.2013",
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
 ];

@@ -9,36 +9,36 @@ export type Images = {
 export const sideImages: Images[] = [
   {
     id: "map",
-    src: "/images/trail-origin-image.jpg",
+    src: "/images/trail-origin-image.webp",
     alt: "Zdjęcie mapy Szlaku Partyzanckiego",
     mobileOrder: 1,
   },
   {
     id: "placeholder-1",
-    src: "/images/placeholder_image.png",
+    src: "/images/placeholder_image.webp",
     alt: "Placeholder",
     mobileOrder: 2,
   },
   {
     id: "placeholder-2",
-    src: "/images/placeholder_image.png",
+    src: "/images/placeholder_image.webp",
     alt: "Placeholder",
     mobileOrder: 3,
   },
   {
     id: "placeholder-3",
-    src: "/images/placeholder_image.png",
+    src: "/images/placeholder_image.webp",
     alt: "Placeholder",
     mobileOrder: 4,
   },
   {
     id: "placeholder-4",
-    src: "/images/placeholder_image.png",
+    src: "/images/placeholder_image.webp",
     alt: "Placeholder",
   },
   {
     id: "placeholder-5",
-    src: "/images/placeholder_image.png",
+    src: "/images/placeholder_image.webp",
     alt: "Placeholder",
   },
 ];

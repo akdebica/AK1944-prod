@@ -14,13 +14,13 @@ export const sections: Record<
   Geneza: {
     text: "Jak powstały i gdzie wiodą ścieżki pamięci?",
     route: Routes.ORIGIN,
-    image: "/images/trail-origin-image.jpg",
+    image: "/images/trail-origin-image.webp",
     alt: "Zdjęcie mapy Szlaku Partyzanckiego",
   },
   Rajdy: {
     text: "Pokonaj rowerem bojowy szlak i poczuj historię na własnej skórze.",
     route: Routes.RAIDS,
-    image: "/images/trail-raid-image.jpg",
+    image: "/images/trail-raid-image.webp",
     alt: "Zdjęcie przedstawiające rowerzystów biorących udział w Rajdzie Rowerowym",
   },
 } as const;
