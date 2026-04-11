@@ -7,7 +7,7 @@ export const Hero = () => (
   <section className="h-[597px] tablet:h-[614px] desktop:h-[651px]">
     <BackgroundImage
       alt="background image"
-      src="/images/hero_background.png"
+      src="/images/hero_background.webp"
       width={1920}
       height={1080}
       priority

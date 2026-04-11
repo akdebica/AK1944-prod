@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="relative isolate min-h-screen overflow-hidden tablet:pb-20 desktop:pb-150">
       <div className="absolute inset-y-0 right-0 hidden h-full w-[40vw] desktop:block">
         <BackgroundImage
-          src="/images/contact-bg.png"
+          src="/images/contact-bg.webp"
           alt="Obrazek przedstawiający retro telefon"
           sizes="(max-width: 1280px) 40vw, 595px"
           quality={85}
@@ -25,7 +25,7 @@ export default function ContactPage() {
       <div className="pointer-events-none absolute inset-0 hidden justify-end tablet:flex desktop:hidden">
         <div className="relative h-full w-[80vw] overflow-hidden">
           <BackgroundImage
-            src="/images/contact-bg.png"
+            src="/images/contact-bg.webp"
             alt="Obrazek przedstawiający retro telefon"
             sizes="80vw"
             quality={70}
@@ -90,7 +90,7 @@ export default function ContactPage() {
 
           <LegalInfo />
         </div>
-        <div className="mt-[2.5rem] flex flex-col gap-6 pb-10 tablet:hidden desktop:flex desktop:max-w-[55%] desktop:flex-row desktop:gap-6 desktop:justify-start">
+        <div className="mt-[2.5rem] flex flex-col gap-6 pb-10 tablet:hidden desktop:flex desktop:max-w-[55%] desktop:flex-row desktop:justify-start desktop:gap-6">
           <TaxCard />
           <RallyCard />
         </div>
