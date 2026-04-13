@@ -13,8 +13,7 @@ export const HistoryBiogramComponent = () => (
   <BackgroundImage
     alt=""
     src="/images/history/main/paper.png"
-    width="768"
-    height="948"
+    sizes="(max-width: 768px) 100vw, 540px"
     className="absolute object-fill contrast:hidden"
     aria-hidden="true"
   >

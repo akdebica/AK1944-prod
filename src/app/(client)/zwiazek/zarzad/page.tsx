@@ -8,7 +8,7 @@ import { ShowOnMobile } from "@/components/shared/ShowOnMobile";
 export default function BoardPage() {
   return (
     <section className="flex flex-col justify-center contrast:bg-black00">
-      <Container as="section" className="pt-5 tablet:pb-[64px] desktop:py-10">
+      <Container as="section" className="tablet:pb-[64px]">
         <Breadcrumbs contrastVariant="yellow" />
         <ShowOnMobile className="flex justify-center py-10">
           <LogoAK className="h-[64px] w-[176px]" />

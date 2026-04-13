@@ -13,6 +13,7 @@ export const Card = ({ book }: { book: Book }) => (
             : `Brak zdjęcia okładki książki ${book.title} autorstwa ${book.autor}`
         }
         fill
+        sizes="(max-width: 768px) 100vw, 288px"
         className="h-full w-full object-cover"
       />
     </div>

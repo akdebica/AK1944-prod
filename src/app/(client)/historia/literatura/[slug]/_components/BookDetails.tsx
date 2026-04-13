@@ -24,7 +24,9 @@ export const BookDetails = (book: Book) => (
               ? `Okładka książki ${book.title} autorstwa ${book.autor}`
               : `Brak zdjęcia okładki książki ${book.title} autorstwa ${book.autor}`
           }
+          sizes="(max-width: 768px) 100vw, 288px"
           fill
+          priority
         />
       </li>
     </ul>

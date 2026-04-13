@@ -9,7 +9,7 @@ export default function MiejscaPamieci({ searchParams }: SearchParamsProps) {
   const page = parseInt(params.page || "1", 10);
   const currentPage = isNaN(page) || page < 1 ? 1 : page;
   return (
-    <Container className="mx-auto max-w-7xl p-4 pt-12 tablet:pb-20 desktop:pb-150">
+    <Container className="mx-auto max-w-7xl px-4 tablet:pb-20 desktop:pb-150">
       <Breadcrumbs />
       <Suspense fallback={<p>Ładowanie listy miejsc pamięci...</p>}>
         <MemorialPlacesList currentPage={currentPage} />
