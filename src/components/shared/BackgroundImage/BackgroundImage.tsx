@@ -12,6 +12,7 @@ export const BackgroundImage = ({
   children,
   src,
   alt,
+  sizes,
   className,
   ...props
 }: BackgroundImageProps) => {
@@ -20,8 +21,11 @@ export const BackgroundImage = ({
       <Image
         src={src}
         alt={alt}
-        quality={100}
-        className={cn("absolute z-0 h-full w-full object-cover", className)}
+        fill
+        priority
+        sizes={sizes ?? "100vw"}
+        quality={80}
+        className={cn("z-0 object-cover", className)}
         {...props}
       />
       <div className="relative z-10">{children}</div>

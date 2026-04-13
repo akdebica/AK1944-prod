@@ -8,8 +8,6 @@ export const Hero = () => (
     <BackgroundImage
       alt="background image"
       src="/images/hero_background.webp"
-      width={1920}
-      height={1080}
       priority
     >
       <Container className="mx-auto flex h-full flex-col items-center justify-center gap-6 pb-5 pt-20 text-center text-white tablet:pt-32 desktop:pt-28">

@@ -8,8 +8,6 @@ export const BecomeDonor = () => (
     <BackgroundImage
       src="/images/become_donor_bg_1.webp"
       alt="Starszy mężczyzna wręcza starszej kobiecie ważne odznaczenie."
-      width={1920}
-      height={1080}
       priority
     >
       <div className="flex h-full min-h-[400px] w-full flex-col items-center justify-center px-4 py-10 text-center tablet:px-8 desktop:px-[368px] desktop:py-60">
