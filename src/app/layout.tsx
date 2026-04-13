@@ -41,7 +41,6 @@ export default function RootLayout({
     <html
       lang="pl"
       data-lt-installed="true"
-      data-scroll-behavior="smooth"
       className="scroll-pt-20 scroll-smooth tablet:scroll-pt-[136px]"
     >
       <body
