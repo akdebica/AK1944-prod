@@ -39,7 +39,7 @@ export const allBiograms: Biogram[] = [
       "Była osobą serdeczną i skromną. Pomimo wieku i życiowych doświadczeń była życzliwa i pomocna dla młodszych członków Związku AK. Za działalność na rzecz niepodległości Polski otrzymała wiele odznaczeń, w tym m.in. Medal Wojska, Krzyż Armii Krajowej, Krzyż Partyzancki, Medal 25-lecia ŚZŻAK w Dębicy.",
       "Zmarła, w stopniu porucznika w stanie spoczynku, 20 kwietnia 2017 roku.",
     ],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ export const allBiograms: Biogram[] = [
       "Od 1989 r. aktywnie uczestniczył w tworzeniu i funkcjonowaniu sędziszowskiego Koła Światowego Związku Żołnierzy Armii Krajowej. 20 listopada 2000 r. decyzją prezydenta Rzeczypospolitej Polskiej mianowany został na pierwszy stopień oficerski Wojska Polskiego. 20 maja 2005 r. otrzymał nominację na stopień porucznika.",
       "W związku z działalnością niepodległościową był też wielokrotnie odznaczany. W 1948 r. Emigracyjny Rząd Polski dwukrotnie uhonorował go Medalem Wojska. W 1983 r. otrzymał Krzyż Armii Krajowej, a w 1985 r. prawo do noszenia Honorowej Odznaki Pułkowej 5. Pułku Strzelców Konnych. 15 października 1990 r. otrzymał Krzyż Partyzancki. W 1994 r. Odznakę Pamiątkową Akcji Burza. Zmarł 5 stycznia 2021 roku. Spoczywa na cmentarzu w Górze Ropczyckiej.",
     ],
-    imageUrl: "/images/biogramy/galazka_jan.png",
+    imageUrl: "/images/biogramy/galazka_jan.webp",
   },
   {
     id: 4,
@@ -107,7 +107,7 @@ export const allBiograms: Biogram[] = [
       "Spoczywaj w pokoju…",
       "Maciej Małozięć",
     ],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 5,
@@ -139,7 +139,7 @@ export const allBiograms: Biogram[] = [
       "- Siostra, Janina, pod ps.”Krzak” była zastępcą komendantki Wojskowej Służby Kobiet w Placówce Brzeziny AK.",
       "Po śmierci została odznaczona: Krzyżem Kawalerskim Orderu Odrodzenia Polski, Krzyżem Armii Krajowej, Medalem Wojska Polskiego.",
     ],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 6,
@@ -158,7 +158,7 @@ export const allBiograms: Biogram[] = [
       "Po 1990 roku zaangażowała się w działalność w strukturach ŚZŻAK. Przez wiele lat pełniła obowiązki skarbnika i kasjera ŚZŻAK Środowiska 5. Pułku Strzelców Konnych Armii Krajowej. Za swoją działalność otrzymała wiele odznaczeń państwowych i wojskowych. Została także awansowana na stopień porucznika Wojska Polskiego.",
     ],
     descriptionSecond: [""],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 7,
@@ -177,7 +177,7 @@ export const allBiograms: Biogram[] = [
       "Zmarła, w stopniu porucznika w stanie spoczynku, 25 listopada 2017 roku. Uroczystości pogrzebowe odbyły się 30 listopada 2017 roku na Cmentarzu Komunalnym przy ulicy Cmentarnej w Dębicy. Ceremonii pogrzebowej przewodniczył ks. Antoni Bielak, proboszcz parafii pw. Miłosierdzia Bożego w Dębicy. W pogrzebie wzięła udział delegacja Zarządu ŚZŻAK Środowiska 5. PSK AK w Dębicy wraz z pocztem sztandarowym 5. Pułku Strzelców Konnych AK.",
     ],
     descriptionSecond: [""],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 8,
@@ -201,7 +201,7 @@ export const allBiograms: Biogram[] = [
       "Za działalność wojenną został odznaczony m.in. Krzyżem Walecznych, czterokrotnie Medalem Wojska, Krzyżem Partyzanckim, Krzyżem Armii Krajowej oraz wieloma innymi odznaczeniami państwowymi i resortowymi.",
       "W 2016 roku, na wniosek ŚZŻAK Środowiska 5. Pułku Strzelców Konnych AK w Dębicy, Rada Miejska w Dębicy przyznała mu tytuł Honorowego Obywatela Miasta Dębicy. Zmarł 29 września 2017 roku, dwa dni po swoich 90. urodzinach.",
     ],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
   {
     id: 9,
@@ -228,6 +228,6 @@ export const allBiograms: Biogram[] = [
       "W 1982 roku przeszedł na emeryturę.",
       "W 1991 roku wstąpił do Światowego Związku Żołnierzy Armii Krajowej w Dębicy od samego początku żywo angażując się w działalność społeczną w środowisku weteranów AK. Za działalność w Armii Krajowej był odznaczony m.in. Orderem Odrodzenia Polski, Krzyżem Partyzanckim, Medalem Armii Krajowej oraz wieloma innymi odznaczeniami. Decyzją Prezydenta RP został także awansowany na stopień porucznika. Zmarł 25 grudnia 2013 roku. Spoczywa na Cmentarzu Parafialnym w Zawadzie.",
     ],
-    imageUrl: "/images/placeholder_image.png",
+    imageUrl: "/images/placeholder_image.webp",
   },
 ];

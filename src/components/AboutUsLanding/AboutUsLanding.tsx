@@ -10,7 +10,7 @@ export const AboutUsLanding = () => (
       <Heading color="green" contrast="yellow" underline>
         O nas
       </Heading>
-      <p className="text-base desktop:text-18 tablet:text-center desktop:pb-4 font-sourceSans">
+      <p className="font-sourceSans text-base tablet:text-center desktop:pb-4 desktop:text-18">
         Światowy Związek Żołnierzy Armii Krajowej (ŚZŻAK) to organizacja
         skupiająca byłych żołnierzy Armii Krajowej oraz ich sympatyków. Powstała
         w 1990 roku i ma na celu upamiętnienie dziedzictwa AK, ochronę dobrego
@@ -34,7 +34,7 @@ export const AboutUsLanding = () => (
         buttonLabel="Poznaj historię"
         href={Routes.HISTORY}
         image={{
-          src: "/images/history_AK.png",
+          src: "/images/history_AK.webp",
           alt: "Historia AK. Zdjęcie grupy żołnierzy: Grupa żołnierzy w mundurach polowych, ustawionych w szeregu. Żołnierze noszą zielone berety, a jeden z nich trzyma sztandar wojskowy i flagę. Tło to miejskie budynki.",
           width: 350,
           height: 190,
@@ -46,7 +46,7 @@ export const AboutUsLanding = () => (
         buttonLabel="Czytaj więcej"
         href={Routes.PARTISAN_TRAIL}
         image={{
-          src: "/images/partisan_trail.png",
+          src: "/images/partisan_trail.webp",
           alt: "Szlak Partyzancki. Zdjęcie mapy: Zbliżenie na starą, szczegółową mapę topograficzną z oznaczeniami rzek, dróg i granic.",
           width: 350,
           height: 190,
@@ -58,7 +58,7 @@ export const AboutUsLanding = () => (
         buttonLabel="Znajdź grób"
         href={Routes.GRAVES_INVENTORY}
         image={{
-          src: "/images/graves.png",
+          src: "/images/graves.webp",
           alt: "Inwentarz grobów. Zdjęcie krzyża pamiątkowego: Metalowy krzyż na pomniku w otoczeniu drzew. Krzyż zdobią polskie flagi, a w tle widać zalesiony krajobraz.",
           width: 350,
           height: 190,

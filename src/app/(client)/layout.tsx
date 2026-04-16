@@ -29,7 +29,7 @@ const sourceSans = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "AK1944",
+    default: "Światowy Związek Żołnierzy Armii Krajowej",
     template: "%s | AK1944",
   },
   description: "AK1944 - Strona poświęcona działalności Armii Krajowej",
@@ -47,6 +47,7 @@ export default function ClientLayout({
     <html
       lang="pl"
       data-lt-installed="true"
+      data-scroll-behavior="smooth"
       className="scroll-pt-20 scroll-smooth tablet:scroll-pt-[136px]"
     >
       <body

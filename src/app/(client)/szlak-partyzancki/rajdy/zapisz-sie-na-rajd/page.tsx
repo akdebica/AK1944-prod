@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
-import { RallyRegistrationForm } from "@/components/RallyRegistrationForm/RallyRegistrationForm";
+import { ContactForm } from "@/components/shared/ContactForm/ContactForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,7 +24,10 @@ export default function SignToRallyPage() {
             Szlakiem Partyzanckim II Zgrupowania Armii Krajowej. Po otrzymaniu
             zgłoszenia skontaktujemy się z Tobą z dodatkowymi informacjami.
           </p>
-          <RallyRegistrationForm />
+          <ContactForm
+            successMessage="Twoje zgłoszenie na rajd zostało przyjęte. Skontaktujemy się z Tobą wkrótce."
+            consentPurpose="zgłoszenia na rajd"
+          />
         </div>
       </Container>
     </div>

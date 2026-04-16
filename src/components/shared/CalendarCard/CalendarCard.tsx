@@ -22,7 +22,7 @@ export const CalendarCard = ({ withButton = false }: Props) => {
     <div className="flex items-center justify-center overflow-hidden px-0 contrast:border-2 contrast:border-b-yellowContrast tablet:px-0 desktop:px-0">
       <BackgroundImage
         alt="calendar background"
-        src="/images/calendar_background.png"
+        src="/images/calendar_background.webp"
         fill
         className="contrast:hidden"
       >

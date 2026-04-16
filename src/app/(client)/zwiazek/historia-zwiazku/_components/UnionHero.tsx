@@ -9,7 +9,7 @@ interface Props {
 
 export const UnionHero = ({ paragraph }: Props) => (
   <BackgroundImage
-    src="/images/hero_background.png"
+    src="/images/hero_background.webp"
     alt="Zdjęcie przedstawiające strzelców konnych z biało czerwonymi proporcami"
     fill
     className="max-h-[1200px] contrast:invisible tablet:h-[640px] tablet:max-h-[660px]"

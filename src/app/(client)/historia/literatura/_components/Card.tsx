@@ -6,13 +6,14 @@ export const Card = ({ book }: { book: Book }) => (
   <li className="flex flex-col items-center gap-4 border-b-4 border-greenLight pb-10 last:border-b-0 tablet:flex-row tablet:items-start tablet:gap-10">
     <div className="relative flex aspect-square w-72 items-center justify-center">
       <Image
-        src={book.img ? book.img : "/images/placeholder_image.png"}
+        src={book.img ? book.img : "/images/placeholder_image.webp"}
         alt={
           book.img
             ? `Okładka książki ${book.title} autorstwa ${book.autor}`
             : `Brak zdjęcia okładki książki ${book.title} autorstwa ${book.autor}`
         }
         fill
+        sizes="(max-width: 768px) 100vw, 288px"
         className="h-full w-full object-cover"
       />
     </div>
