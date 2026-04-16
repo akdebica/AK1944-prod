@@ -1,5 +1,6 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { pl } from "@payloadcms/translations/languages/pl";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -7,7 +8,7 @@ import sharp from "sharp";
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
-import { Posts } from "./collections/Posts";
+import { News } from "./collections/News";
 import { Galleries } from "./collections/Galleries";
 
 const filename = fileURLToPath(import.meta.url);
@@ -20,8 +21,19 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Galleries],
-  editor: lexicalEditor(),
+  localization: {
+    defaultLocale: "pl",
+    locales: ["pl"],
+    fallback: true,
+  },
+  i18n: {
+    fallbackLanguage: "pl",
+    supportedLanguages: { pl },
+  },
+  collections: [Users, Media, News, Galleries],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [...defaultFeatures],
+  }),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

@@ -1,13 +1,6 @@
-export interface NewsItemData {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  publishedAt: string;
-  content: string;
-}
 
-export const data: NewsItemData[] = [
+
+export const data= [
   {
     id: "133",
     title: "Obelisk „Marii” zostanie odnowiony",

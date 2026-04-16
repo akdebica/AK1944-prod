@@ -1,11 +1,7 @@
 import { Card } from "@/app/(client)/archiwum/_components/Card";
-import type { NewsItemData } from "@/app/(client)/archiwum/_components/data";
+import type { News } from "@/payload-types";
 
-interface ListProps {
-  data: NewsItemData[];
-}
-
-export const List = ({ data }: ListProps) => {
+export const List = ({ data }: { data: News[] }) => {
   return (
     <ul className="flex flex-col items-center gap-10">
       {data.map((newsItem) => (

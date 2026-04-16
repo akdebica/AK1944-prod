@@ -1,12 +1,13 @@
 import { type ElementType, type ReactNode } from "react";
 
 export interface Post {
-  id: number;
+  id: string;
   date: string;
   title: string;
   content: string;
   excerpt: string;
-  featured_media: number;
+  image: string;
+  slug: string;
 }
 
 export interface Image {

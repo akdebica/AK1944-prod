@@ -1,9 +1,11 @@
-import { data } from "@/app/(client)/archiwum/_components/data";
 import { List } from "@/app/(client)/archiwum/_components/List";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
 import { Pagination } from "@/components/shared/Pagination";
+import { fetchCollection } from "@/dataAccess/fetchPayloadCollection";
+
+const ITEMS_PER_PAGE = 5;
 
 export default async function ArchivePage({
   searchParams,
@@ -11,14 +13,13 @@ export default async function ArchivePage({
   searchParams: { page?: string };
 }) {
   const params = await searchParams;
+  const { docs: posts } = await fetchCollection({ collection: "news" });
 
-  const ITEMS_PER_PAGE = 5;
   const page = parseInt(params.page || "1", 10);
   const currentPage = isNaN(page) || page < 1 ? 1 : page;
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedData = data.slice(start, start + ITEMS_PER_PAGE);
-
-  const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+  const paginatedData = posts.slice(start, start + ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
 
   return (
     <section>

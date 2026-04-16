@@ -69,7 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    posts: Post;
+    news: News;
     galleries: Gallery;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -80,7 +80,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -90,10 +90,10 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | 'pl' | 'pl'[];
   globals: {};
   globalsSelect: {};
-  locale: null;
+  locale: 'pl';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -167,13 +167,11 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
+ * via the `definition` "news".
  */
-export interface Post {
+export interface News {
   id: string;
   title: string;
-  slug: string;
-  excerpt?: string | null;
   content: {
     root: {
       type: string;
@@ -191,9 +189,15 @@ export interface Post {
   };
   featuredImage?: (string | null) | Media;
   publishedAt?: string | null;
-  legacyId?: string | null;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
   createGallery?: boolean | null;
   galleryTitle?: string | null;
+  /**
+   * Generowany automatycznie na podstawie tytułu galerii.
+   */
   gallerySlug?: string | null;
   galleryImages?:
     | {
@@ -213,11 +217,14 @@ export interface Post {
 export interface Gallery {
   id: string;
   title: string;
-  slug: string;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
   description?: string | null;
   coverImage?: (string | null) | Media;
-  sourceType: 'manual' | 'post';
-  sourcePost?: (string | null) | Post;
+  sourceType: 'manual' | 'news';
+  sourceNews?: (string | null) | News;
   images?:
     | {
         image: string | Media;
@@ -262,8 +269,8 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'posts';
-        value: string | Post;
+        relationTo: 'news';
+        value: string | News;
       } | null)
     | ({
         relationTo: 'galleries';
@@ -353,16 +360,14 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
+ * via the `definition` "news_select".
  */
-export interface PostsSelect<T extends boolean = true> {
+export interface NewsSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  excerpt?: T;
   content?: T;
   featuredImage?: T;
   publishedAt?: T;
-  legacyId?: T;
+  slug?: T;
   createGallery?: T;
   galleryTitle?: T;
   gallerySlug?: T;
@@ -387,7 +392,7 @@ export interface GalleriesSelect<T extends boolean = true> {
   description?: T;
   coverImage?: T;
   sourceType?: T;
-  sourcePost?: T;
+  sourceNews?: T;
   images?:
     | T
     | {

@@ -33,3 +33,40 @@ export const slugify = (text?: string): string | undefined =>
         .replace(/[\s_]+/g, "-")
         .replace(/-+/g, "-")
         .toLowerCase();
+
+const normalizeRichTextWhitespace = (text: string): string =>
+  text.replace(/\s+/g, " ").trim();
+
+export const extractTextFromRichText = (node: any): string => {
+  if (!node) return "";
+
+  if (Array.isArray(node)) {
+    return normalizeRichTextWhitespace(
+      node.map(extractTextFromRichText).filter(Boolean).join(" "),
+    );
+  }
+
+  if (typeof node.text === "string") {
+    return node.text;
+  }
+
+  const nestedText = [
+    extractTextFromRichText(node.root),
+    extractTextFromRichText(node.children),
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return normalizeRichTextWhitespace(nestedText);
+};
+
+export const getExcerpt = (content: string, wordLimit: number) => {
+  const normalizedContent = content.trim().replace(/\s+/g, " ");
+  const words = normalizedContent.split(" ");
+
+  if (words.length <= wordLimit) {
+    return normalizedContent;
+  }
+
+  return `${words.slice(0, wordLimit).join(" ")}...`;
+};

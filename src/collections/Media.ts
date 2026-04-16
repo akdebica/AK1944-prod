@@ -1,16 +1,21 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
-  slug: 'media',
+  slug: "media",
+  labels: {
+    singular: "Plik multimedialny",
+    plural: "Media",
+  },
   access: {
     read: () => true,
   },
   fields: [
     {
-      name: 'alt',
-      type: 'text',
+      name: "alt",
+      type: "text",
+      label: "Tekst alternatywny",
       required: true,
     },
   ],
   upload: true,
-}
+};

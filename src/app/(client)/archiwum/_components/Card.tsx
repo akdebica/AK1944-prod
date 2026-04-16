@@ -1,19 +1,9 @@
-import Image from "next/image";
-import type { NewsItemData } from "@/app/(client)/archiwum/_components/data";
 import { Button } from "@/components/shared/Button/Button";
+import { FeaturedImage } from "@/components/shared/FeaturedImage/FeaturedImage";
+import { extractTextFromRichText, getExcerpt } from "@/utils";
+import type { News } from "@/payload-types";
 
 const EXCERPT_WORD_LIMIT = 70;
-
-const getExcerpt = (content: string, wordLimit: number) => {
-  const normalizedContent = content.trim().replace(/\s+/g, " ");
-  const words = normalizedContent.split(" ");
-
-  if (words.length <= wordLimit) {
-    return normalizedContent;
-  }
-
-  return `${words.slice(0, wordLimit).join(" ")}...`;
-};
 
 const dateFormatter = new Intl.DateTimeFormat("pl-PL", {
   year: "numeric",
@@ -21,8 +11,9 @@ const dateFormatter = new Intl.DateTimeFormat("pl-PL", {
   day: "numeric",
 });
 
-export const Card = ({ newsItem }: { newsItem: NewsItemData }) => {
-  const newsContent = getExcerpt(newsItem.content, EXCERPT_WORD_LIMIT);
+export const Card = ({ newsItem }: { newsItem: News }) => {
+  const extractedText = extractTextFromRichText(newsItem.content);
+  const newsContent = getExcerpt(extractedText, EXCERPT_WORD_LIMIT);
 
   return (
     <li className="border-b-4 border-greenMain pb-10">
@@ -31,11 +22,9 @@ export const Card = ({ newsItem }: { newsItem: NewsItemData }) => {
           {newsItem.title}
         </h2>
         <div className="relative aspect-[4/3] w-full overflow-hidden tablet:col-start-1 tablet:row-span-2 tablet:row-start-1 tablet:w-[22rem] desktop:w-[26rem]">
-          <Image
-            src={
-              newsItem.image ? newsItem.image : "/images/placeholder_image.png"
-            }
-            alt={newsItem.title}
+          <FeaturedImage
+            featuredImage={newsItem.featuredImage}
+            fallbackAlt={newsItem.title}
             fill
             className="object-cover"
           />
@@ -45,7 +34,8 @@ export const Card = ({ newsItem }: { newsItem: NewsItemData }) => {
           <div className="mt-10 flex flex-col gap-4 tablet:flex-row tablet:items-end tablet:justify-between">
             <p className="text-xl text-greenMain opacity-80">
               Opublikowano:{" "}
-              {dateFormatter.format(new Date(newsItem.publishedAt))}
+              {newsItem.publishedAt &&
+                dateFormatter.format(new Date(newsItem.publishedAt))}
             </p>
             <Button
               className="self-center"
