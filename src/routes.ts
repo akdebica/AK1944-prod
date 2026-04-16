@@ -26,6 +26,7 @@ export const Routes = {
   COOKIES: "/polityka-cookies",
   REGULATIONS: "/regulamin",
   VOLUNTEERS: "/wolontariusze",
+  VOLUNTEER_FORM: "/wolontariusze/zostan-wolontariuszem",
   ARCHIVE: "/archiwum",
 } as const;
 
