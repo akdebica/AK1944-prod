@@ -1,5 +1,6 @@
 import { Heading } from "@/components/shared/Heading/Heading";
 import { Button } from "@/components/shared/Button/Button";
+import { Routes } from "@/routes";
 
 export const VolunteerJoin = () => (
   <section className="mt-6 flex justify-center">
@@ -23,8 +24,8 @@ export const VolunteerJoin = () => (
           label="Wypełnij formularz"
           variant="primary"
           className="rounded-desktop min-w-[180px]"
-          ariaDescription="Wypełnij formularz"
-          href=""
+          ariaDescription="Wypełnij formularz zgłoszeniowy wolontariusza"
+          href={Routes.VOLUNTEER_FORM}
         />
       </div>
     </div>
