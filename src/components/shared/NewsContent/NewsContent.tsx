@@ -1,6 +1,5 @@
 import type { News } from "@/payload-types";
 import { extractTextFromRichText, getExcerpt } from "@/utils";
-import { RichText } from "@payloadcms/richtext-lexical/react";
 import Link from "next/link";
 
 export const NewsContent = ({

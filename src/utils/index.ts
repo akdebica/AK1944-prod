@@ -3,6 +3,13 @@ import { twMerge } from "tailwind-merge";
 
 export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes));
 
+type RichTextNode = {
+  [key: string]: unknown;
+  text?: string;
+  root?: RichTextNode | null;
+  children?: RichTextNode[] | null;
+};
+
 export const formatDate = (isoDate: string): string =>
   new Intl.DateTimeFormat("pl-PL", {
     day: "2-digit",
@@ -37,7 +44,9 @@ export const slugify = (text?: string): string | undefined =>
 const normalizeRichTextWhitespace = (text: string): string =>
   text.replace(/\s+/g, " ").trim();
 
-export const extractTextFromRichText = (node: any): string => {
+export const extractTextFromRichText = (
+  node?: RichTextNode | RichTextNode[] | null,
+): string => {
   if (!node) return "";
 
   if (Array.isArray(node)) {
