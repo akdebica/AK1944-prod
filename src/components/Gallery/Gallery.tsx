@@ -14,7 +14,7 @@ export interface GalleryImage {
 }
 
 export interface GalleryData {
-  id: number;
+  id: string;
   subtitle: string;
   date: string;
   images: GalleryImage[];
