@@ -1,35 +1,39 @@
-import { getPayload } from "payload";
 import config from "@payload-config";
-import type { News } from "@/payload-types";
+import type { Config } from "@/payload-types";
+import { getPayload, type FindArgs } from "payload";
+
+type CollectionMap = Pick<Config["collections"], "news">;
+type CollectionQuery = Pick<
+  FindArgs,
+  "limit" | "page" | "pagination" | "sort" | "where"
+> & {
+  locale?: Config["locale"] | "all";
+};
+type CollectionQueries = {
+  [K in keyof CollectionMap]: CollectionQuery;
+};
 
 type FetchResult<T> = {
   docs: T[];
   error: string | null;
 };
 
-type CollectionMap = {
-  news: News;
-};
-
-type findArgs = Parameters<typeof getPayload>["find"];
-
 export async function fetchCollection<K extends keyof CollectionMap>({
   collection,
-  query = {},
+  query,
 }: {
   collection: K;
-  query?: Omit<findArgs, "collection">;
+  query?: CollectionQueries[K];
 }): Promise<FetchResult<CollectionMap[K]>> {
   try {
     const payload = await getPayload({ config });
-
-    const res = await payload.find({
+    const result = await payload.find({
       collection,
-      ...query,
+      ...(query ?? {}),
     });
 
     return {
-      docs: res.docs as CollectionMap[K][],
+      docs: result.docs,
       error: null,
     };
   } catch (error) {
