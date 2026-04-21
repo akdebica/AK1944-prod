@@ -6,12 +6,13 @@ import { fetchBySlug } from "@/dataAccess/fetchPayloadCollection";
 import { converters } from "@/utils/richtext/converters";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 
-export default async function ArchivePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { doc: post } = await fetchBySlug("news", params.slug);
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function ArchivePage({ params }: PageProps) {
+  const { slug } = await params;
+  const { doc: post } = await fetchBySlug("news", slug);
 
   return (
     <section>

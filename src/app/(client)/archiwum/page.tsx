@@ -7,11 +7,13 @@ import { fetchCollection } from "@/dataAccess/fetchPayloadCollection";
 
 const ITEMS_PER_PAGE = 5;
 
-export default async function ArchivePage({
-  searchParams,
-}: {
-  searchParams: { page?: string };
-}) {
+type PageProps = {
+  searchParams: Promise<{
+    page?: string;
+  }>;
+};
+
+export default async function ArchivePage({ searchParams }: PageProps) {
   const params = await searchParams;
   const { docs: posts } = await fetchCollection({ collection: "news" });
 
