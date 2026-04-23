@@ -456,4 +456,104 @@ export const data = [
     date: "27.12.1918",
     description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
   },
+  {
+    id: "43",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "44",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "45",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "46",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "47",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "48",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "49",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "50",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "51",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
+  {
+    id: "52",
+    title: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    image: {
+      src: "/images/news_placeholder.webp",
+      alt: "placeholder",
+    },
+    date: "27.12.1918",
+    description: "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+  },
 ];

@@ -2,16 +2,15 @@ import Container from "../shared/Container";
 import { Button } from "../shared/Button/Button";
 import { Heading } from "../shared/Heading/Heading";
 import { NewsItem } from "../shared/NewsItem/NewsItem";
-import { getPosts } from "@/dataAccess/posts";
+import { fetchCollection } from "@/dataAccess/fetchPayloadCollection";
 import { Routes } from "@/routes";
 import { CalendarCard } from "@/components/shared/CalendarCard/CalendarCard";
 
 export const NewsLanding = async () => {
-  const [posts, error] = await getPosts(2);
-
-  const noData = error || !posts || posts.length === 0;
-
-  if (noData) return null;
+  const { docs: posts } = await fetchCollection({
+    collection: "news",
+    query: { limit: 2 },
+  });
 
   return (
     <section>
@@ -21,13 +20,13 @@ export const NewsLanding = async () => {
         </Heading>
       </div>
       <div className="flex flex-col items-center justify-center gap-10 bg-greenMain py-10">
-        <Container className="flex flex-col items-center justify-center gap-10 tablet:px-11 desktop:flex-row-reverse desktop:gap-36 desktop:px-44">
+        <Container className="flex flex-col items-center justify-center gap-10 tablet:px-11 desktop:flex-row-reverse desktop:gap-36 desktop:px-32">
           <div>
             <CalendarCard withButton />
           </div>
-          <div className="flex flex-col items-center justify-center gap-5 tablet:gap-10">
+          <div className="flex w-full flex-col items-center justify-center gap-5 tablet:gap-10">
             {posts.map((post) => (
-              <NewsItem key={post.id} post={post} />
+              <NewsItem key={post.id} newsItem={post} />
             ))}
           </div>
         </Container>

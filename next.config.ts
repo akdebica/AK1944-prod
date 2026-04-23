@@ -3,6 +3,9 @@ import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     remotePatterns: [{ hostname: "ak1944.pl" }, { hostname: "wp.ak1944.pl" }],
   },

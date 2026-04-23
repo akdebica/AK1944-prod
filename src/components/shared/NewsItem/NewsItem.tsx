@@ -1,33 +1,34 @@
-import parse from "html-react-parser";
-
 import { NewsHeader } from "../NewsHeader/NewsHeader";
-import { NewsImage } from "../NewsImage/NewsImage";
 import { NewsContent } from "../NewsContent/NewsContent";
 
-import { getImage } from "@/dataAccess/image";
-import { cleanHTML, truncateText } from "@/utils";
-import { Post } from "@/types";
+import type { Media, News } from "@/payload-types";
+import { FeaturedImage } from "@/components/shared/FeaturedImage/FeaturedImage";
 
-interface Props {
-  post: Post;
-}
+type NewsItemProps = {
+  newsItem: News & { image?: Media };
+};
 
-export const NewsItem = async ({
-  post: { id, title, date, featured_media, excerpt },
-}: Props) => {
-  const image = await getImage(featured_media);
-  const cleanedExcerpt = cleanHTML(excerpt);
-  const decodedCleanExcerpt = parse(cleanedExcerpt).toString();
-  const truncatedExcerpt = truncateText(decodedCleanExcerpt, 150);
-
+export const NewsItem = ({ newsItem }: NewsItemProps) => {
+  const safeSlug = newsItem.slug || newsItem.id;
   return (
     <article
-      key={id}
-      className="flex flex-col items-start justify-start gap-3 text-20 tablet:grid tablet:gap-x-6 tablet:gap-y-3"
+      key={newsItem.id}
+      className="flex w-full flex-col items-start justify-start gap-3 text-20 tablet:grid tablet:gap-x-6 tablet:gap-y-3"
     >
-      <NewsHeader title={title} date={date} />
-      <NewsImage src={image} />
-      <NewsContent excerpt={truncatedExcerpt} />
+      <NewsHeader title={newsItem.title} date={newsItem.publishedAt} />
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg tablet:col-start-1 tablet:row-span-2 tablet:row-start-1 tablet:w-[22rem] desktop:w-[20rem]">
+        <FeaturedImage
+          featuredImage={newsItem.featuredImage}
+          fallbackAlt={newsItem.title}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <NewsContent
+        content={newsItem.content}
+        slug={safeSlug}
+        title={newsItem.title}
+      />
     </article>
   );
 };
