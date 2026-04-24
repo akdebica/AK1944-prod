@@ -1,74 +1,103 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
+
+import { slugify } from "@/utils";
+
+const formatSlug = (value?: string, fallback?: string) =>
+  slugify(value || fallback) || value;
 
 export const Galleries: CollectionConfig = {
-  slug: 'galleries',
+  slug: "galleries",
+  labels: {
+    singular: "Galeria",
+    plural: "Galerie",
+  },
   access: {
     read: () => true,
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
+      label: "Tytuł",
       required: true,
     },
     {
-      name: 'slug',
-      type: 'text',
-      required: true,
+      name: "slug",
+      type: "text",
+      label: "Slug",
+      admin: {
+        description: "Generowany automatycznie na podstawie tytułu.",
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => formatSlug(value, siblingData?.title),
+        ],
+      },
       unique: true,
     },
     {
-      name: 'description',
-      type: 'textarea',
+      name: "description",
+      type: "textarea",
+      label: "Opis",
     },
     {
-      name: 'coverImage',
-      type: 'upload',
-      relationTo: 'media',
+      name: "coverImage",
+      type: "upload",
+      label: "Zdjęcie okładkowe",
+      relationTo: "media",
     },
     {
-      name: 'sourceType',
-      type: 'select',
+      name: "sourceType",
+      type: "select",
+      label: "Źródło galerii",
       required: true,
-      defaultValue: 'manual',
+      defaultValue: "manual",
       options: [
         {
-          label: 'Manual',
-          value: 'manual',
+          label: "Ręcznie",
+          value: "manual",
         },
         {
-          label: 'From post',
-          value: 'post',
+          label: "Z aktualności",
+          value: "news",
         },
       ],
     },
     {
-      name: 'sourcePost',
-      type: 'relationship',
-      relationTo: 'posts',
+      name: "sourceNews",
+      type: "relationship",
+      label: "Źródłowa aktualność",
+      relationTo: "news",
       admin: {
-        condition: (_, siblingData) => siblingData?.sourceType === 'post',
+        condition: (_, siblingData) => siblingData?.sourceType === "news",
       },
     },
     {
-      name: 'images',
-      type: 'array',
+      name: "images",
+      type: "array",
+      labels: {
+        singular: "Zdjęcie",
+        plural: "Zdjęcia",
+      },
       fields: [
         {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
+          name: "image",
+          type: "upload",
+          label: "Zdjęcie",
+          relationTo: "media",
           required: true,
         },
         {
-          name: 'caption',
-          type: 'text',
+          name: "caption",
+          type: "text",
+          label: "Podpis",
         },
       ],
     },
     {
-      name: 'publishedAt',
-      type: 'date',
+      name: "publishedAt",
+      type: "date",
+      label: "Data publikacji",
     },
   ],
-}
+};

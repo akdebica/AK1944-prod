@@ -11,7 +11,7 @@ export const MemorialHeadingSection = ({
 }) => (
   <>
     <div className="mb-10 mt-10">
-      <Breadcrumbs currentPageLabel={name} />
+      <Breadcrumbs />
     </div>
     <Heading
       variant="h1"

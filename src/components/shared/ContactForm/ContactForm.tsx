@@ -19,7 +19,15 @@ interface FormErrors {
   consent?: string;
 }
 
-export const RallyRegistrationForm = () => {
+interface ContactFormProps {
+  successMessage?: string;
+  consentPurpose?: string;
+}
+
+export const ContactForm = ({
+  successMessage = "Twoje zgłoszenie na rajd zostało przyjęte. Skontaktujemy się z Tobą wkrótce.",
+  consentPurpose = "zgłoszenia na rajd",
+}: ContactFormProps = {}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -114,8 +122,7 @@ export const RallyRegistrationForm = () => {
           Dziękujemy za zgłoszenie!
         </p>
         <p className="text-white">
-          Twoje zgłoszenie na rajd zostało przyjęte. Skontaktujemy się z Tobą
-          wkrótce.
+          {successMessage}
         </p>
         <button
           onClick={() => setIsSubmitted(false)}
@@ -214,7 +221,7 @@ export const RallyRegistrationForm = () => {
                 Politykę Prywatności
               </Link>{" "}
               oraz wyrażam zgodę na przetwarzanie moich danych osobowych w celu
-              obsługi zgłoszenia na rajd.
+              obsługi {consentPurpose}.
             </>
           }
           required
@@ -233,7 +240,7 @@ export const RallyRegistrationForm = () => {
           variant="primary"
           size="large"
           label={isSubmitting ? "Wysyłanie..." : "Wyślij zgłoszenie"}
-          ariaDescription="Wyślij formularz zgłoszenia na rajd"
+          ariaDescription={`Wyślij formularz ${consentPurpose}`}
           disabled={isSubmitting}
           className={cn("w-full tablet:w-auto", {
             "cursor-not-allowed opacity-50": isSubmitting,

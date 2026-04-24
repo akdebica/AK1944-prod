@@ -1,13 +1,14 @@
 import { Heading } from "@/components/shared/Heading/Heading";
 import { SupportSection } from "../../wesprzyj/_components/SupportSection";
 import { VolunteerCard } from "../../wesprzyj/_components/VolunteerSection/VolunteerCard";
+import { Routes } from "@/routes";
 
 export const VolunteerIntro = () => (
   <SupportSection
     id="volunteer-main-section"
     title="Zostań wolontariuszem"
     card={
-      <VolunteerCard buttonText="Wypełnij formularz" href="#volunteer-form" />
+      <VolunteerCard buttonText="Wypełnij formularz" href={Routes.VOLUNTEER_FORM} />
     }
   >
     <div className="space-y-6">

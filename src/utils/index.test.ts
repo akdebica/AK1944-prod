@@ -1,4 +1,4 @@
-import { slugify } from ".";
+import { extractTextFromRichText, slugify } from ".";
 
 describe("utils", () => {
   describe("slugify", () => {
@@ -35,6 +35,25 @@ describe("utils", () => {
       { text: "Jak zostać partnerem?", slug: "jak-zostac-partnerem" },
     ])(`should create proper slug for: $text`, ({ text, slug }) => {
       expect(slugify(text)).toBe(slug);
+    });
+  });
+
+  describe("extractTextFromRichText", () => {
+    it("should extract plain text from lexical rich text content", () => {
+      expect(
+        extractTextFromRichText({
+          root: {
+            children: [
+              {
+                children: [{ text: "Pierwszy akapit." }],
+              },
+              {
+                children: [{ text: "Drugi akapit." }],
+              },
+            ],
+          },
+        }),
+      ).toBe("Pierwszy akapit. Drugi akapit.");
     });
   });
 });

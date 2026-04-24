@@ -4,7 +4,7 @@ import AboutUsLandingCard from "../AboutUsLandingCard/AboutUsLandingCard";
 jest.mock("next/image", () => ({
   __esModule: true,
   default: ({ src, alt }: { src: string; alt: string }) => (
-    <img src={src} alt={alt} />
+    <div role="img" aria-label={alt} data-src={src} />
   ),
 }));
 
@@ -24,9 +24,9 @@ describe("AboutUsLandingCard", () => {
   it("renders the component with the correct content", () => {
     render(<AboutUsLandingCard {...props} />);
 
-    const image = screen.getByAltText(props.image.alt);
+    const image = screen.getByRole("img", { name: props.image.alt });
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", props.image.src);
+    expect(image).toHaveAttribute("data-src", props.image.src);
 
     const heading = screen.getByText(props.heading);
     expect(heading).toBeInTheDocument();
