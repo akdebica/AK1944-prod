@@ -4,11 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
+import type { GalleryImage } from "@/types";
 
 interface GallerySliderProps {
   images: GalleryImage[];
@@ -40,14 +36,14 @@ export const GallerySlider = ({ images, onImageClick }: GallerySliderProps) => {
         <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2">
           <button
             onClick={handlePrev}
-            className="rounded-sm bg-greenB p-3 hover:bg-green-800 disabled:opacity-50"
+            className="rounded-sm bg-greenB p-3 hover:bg-green-800 disabled:opacity-50 contrast:bg-yellowContrast contrast:hover:bg-yellow-400"
             aria-label="Poprzednie zdjęcia"
             disabled={index === 0}
           >
             <Image
               src="/images/icons/left-arrow-alt.svg"
               alt="Strzałka w lewo"
-              className="h-6 w-6"
+              className="h-6 w-6 contrast:brightness-0"
               width={20}
               height={20}
             />
@@ -59,14 +55,14 @@ export const GallerySlider = ({ images, onImageClick }: GallerySliderProps) => {
         <div className="absolute right-0 top-1/2 z-10 -translate-y-1/2">
           <button
             onClick={handleNext}
-            className="rounded-sm bg-greenB p-3 hover:bg-green-800 disabled:opacity-50"
+            className="rounded-sm bg-greenB p-3 hover:bg-green-800 disabled:opacity-50 contrast:bg-yellowContrast contrast:hover:bg-yellow-400"
             aria-label="Następne zdjęcia"
             disabled={index === pageCount - 1}
           >
             <Image
               src="/images/icons/right-arrow-alt.svg"
               alt="Strzałka w prawo"
-              className="h-6 w-6"
+              className="h-6 w-6 contrast:brightness-0"
               width={20}
               height={20}
             />

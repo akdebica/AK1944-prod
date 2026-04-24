@@ -7,18 +7,7 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import { GalleryItem } from "./GalleryItem";
 import { ImageModal } from "./ImageModal";
 import { Pagination } from "@/components/shared/Pagination";
-
-export interface GalleryImage {
-  src: string;
-  alt: string;
-}
-
-export interface GalleryData {
-  id: string;
-  subtitle: string;
-  date: string;
-  images: GalleryImage[];
-}
+import type { GalleryImage, GalleryData } from "@/types";
 
 interface GalleryProps {
   title: string;

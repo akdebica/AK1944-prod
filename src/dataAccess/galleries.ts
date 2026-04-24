@@ -1,6 +1,6 @@
-import type { GalleryData, GalleryImage } from "@/components/Gallery/Gallery";
+import type { GalleryData, GalleryImage } from "@/types";
 
-const PAYLOAD_API_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3000";
+const PAYLOAD_API_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL;
 
 interface PayloadMedia {
   id: string;
@@ -87,5 +87,50 @@ export const getGalleries = async (): Promise<GalleryData[]> => {
   } catch (error) {
     console.error("Error fetching galleries:", error);
     throw error;
+  }
+};
+
+export interface NewsGallery {
+  title: string;
+  date: string;
+  images: GalleryImage[];
+}
+
+const mapPayloadGalleryToNewsGallery = (gallery: PayloadGallery): NewsGallery => {
+  const images: GalleryImage[] = gallery.images.map((item) => ({
+    src: item.image.url.startsWith('http') ? item.image.url : `${PAYLOAD_API_URL}${item.image.url}`,
+    alt: item.image.alt || item.caption || gallery.title,
+  }));
+
+  return {
+    title: gallery.title,
+    date: formatDate(gallery.publishedAt || gallery.createdAt),
+    images,
+  };
+};
+
+export const getGalleryByNewsId = async (newsId: string): Promise<NewsGallery | null> => {
+  try {
+    const response = await fetch(
+      `${PAYLOAD_API_URL}/api/galleries?where[sourceNews][equals]=${newsId}&limit=1`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch gallery for news ${newsId}: ${response.statusText}`);
+    }
+
+    const data: PayloadResponse = await response.json();
+    
+    if (data.docs.length === 0) {
+      return null;
+    }
+
+    return mapPayloadGalleryToNewsGallery(data.docs[0]);
+  } catch (error) {
+    console.error(`Error fetching gallery for news ${newsId}:`, error);
+    return null;
   }
 };

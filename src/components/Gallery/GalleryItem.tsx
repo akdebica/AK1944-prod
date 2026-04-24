@@ -1,11 +1,7 @@
 "use client";
 
 import { GallerySlider } from "./GallerySlider";
-
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
+import type { GalleryImage } from "@/types";
 
 interface GalleryItemProps {
   subtitle: string;

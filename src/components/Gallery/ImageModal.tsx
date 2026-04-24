@@ -3,11 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { ModalCloseIcon } from "@/icons/ModalCloseIcon";
-
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
+import type { GalleryImage } from "@/types";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -88,13 +84,13 @@ export const ImageModal = ({
 
         <button
           onClick={handlePrev}
-          className="absolute left-4 z-20 rounded-sm bg-greenB p-3 hover:bg-green-800"
+          className="absolute left-4 z-20 rounded-sm bg-greenB p-3 hover:bg-green-800 contrast:bg-yellowContrast contrast:hover:bg-yellow-400"
           aria-label="Poprzednie zdjęcie"
         >
           <Image
             src="/images/icons/left-arrow-alt.svg"
             alt="Strzałka w lewo"
-            className="h-6 w-6"
+            className="h-6 w-6 contrast:brightness-0"
             width={24}
             height={24}
           />
@@ -112,19 +108,19 @@ export const ImageModal = ({
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded bg-greenB px-4 py-2 text-sm font-semibold text-white">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded bg-greenB px-4 py-2 text-sm font-semibold text-white contrast:bg-yellowContrast contrast:text-black00">
           {currentIndex + 1} / {images.length}
         </div>
 
         <button
           onClick={handleNext}
-          className="absolute right-4 z-20 rounded-sm bg-greenB p-3 hover:bg-green-800"
+          className="absolute right-4 z-20 rounded-sm bg-greenB p-3 hover:bg-green-800 contrast:bg-yellowContrast contrast:hover:bg-yellow-400"
           aria-label="Następne zdjęcie"
         >
           <Image
             src="/images/icons/right-arrow-alt.svg"
             alt="Strzałka w prawo"
-            className="h-6 w-6"
+            className="h-6 w-6 contrast:brightness-0"
             width={24}
             height={24}
           />
