@@ -211,8 +211,7 @@ export const News: CollectionConfig = {
       label: "Powiązana galeria",
       relationTo: "galleries",
       admin: {
-        readOnly: true,
-        condition: (_, siblingData) => Boolean(siblingData?.createGallery),
+        hidden: true,
       },
     },
   ],
