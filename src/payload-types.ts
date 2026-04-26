@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     news: News;
     galleries: Gallery;
+    calendar: Calendar;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
+    calendar: CalendarSelect<false> | CalendarSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -238,6 +240,33 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar".
+ */
+export interface Calendar {
+  id: string;
+  title: string;
+  date: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  featuredImage?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -275,6 +304,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'galleries';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'calendar';
+        value: string | Calendar;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -401,6 +434,18 @@ export interface GalleriesSelect<T extends boolean = true> {
         id?: T;
       };
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar_select".
+ */
+export interface CalendarSelect<T extends boolean = true> {
+  title?: T;
+  date?: T;
+  description?: T;
+  featuredImage?: T;
   updatedAt?: T;
   createdAt?: T;
 }
