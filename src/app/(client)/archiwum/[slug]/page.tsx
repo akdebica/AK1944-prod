@@ -35,6 +35,7 @@ export default async function ArchivePage({ params }: PageProps) {
                 featuredImage={post?.featuredImage}
                 fallbackAlt="Zdjęcie główne"
                 fill
+                sizes="(min-width: 1280px) 500px, (min-width: 1024px) 420px, (min-width: 640px) 320px, 100vw"
                 className="object-cover"
               />
             </div>

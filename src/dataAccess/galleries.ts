@@ -20,7 +20,6 @@ interface PayloadGallery {
   title: string;
   slug: string;
   description?: string;
-  coverImage?: PayloadMedia;
   images: PayloadGalleryImage[];
   publishedAt?: string;
   createdAt: string;

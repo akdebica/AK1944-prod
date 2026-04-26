@@ -94,6 +94,7 @@ export const GallerySlider = ({ images, onImageClick }: GallerySliderProps) => {
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
                       className="object-cover"
                     />
                   </div>

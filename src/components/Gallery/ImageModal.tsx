@@ -25,13 +25,13 @@ export const ImageModal = ({
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
-  };
+  }, [images.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
-  };
+  }, [images.length]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -39,7 +39,7 @@ export const ImageModal = ({
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
     },
-    [onClose, currentIndex],
+    [onClose, handlePrev, handleNext],
   );
 
   useEffect(() => {
@@ -102,6 +102,7 @@ export const ImageModal = ({
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
               fill
+              sizes="90vw"
               className="object-contain"
               priority
             />
