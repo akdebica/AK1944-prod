@@ -222,9 +222,9 @@ export interface Gallery {
    */
   slug?: string | null;
   description?: string | null;
-  coverImage?: (string | null) | Media;
   sourceType: 'manual' | 'news';
   sourceNews?: (string | null) | News;
+  publishedAt?: string | null;
   images?:
     | {
         image: string | Media;
@@ -232,7 +232,6 @@ export interface Gallery {
         id?: string | null;
       }[]
     | null;
-  publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -390,9 +389,9 @@ export interface GalleriesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   description?: T;
-  coverImage?: T;
   sourceType?: T;
   sourceNews?: T;
+  publishedAt?: T;
   images?:
     | T
     | {
@@ -400,7 +399,6 @@ export interface GalleriesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
-  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
