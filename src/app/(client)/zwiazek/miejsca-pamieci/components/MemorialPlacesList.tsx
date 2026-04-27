@@ -1,9 +1,10 @@
 import { MemorialPlace } from "@/components/MemorialPlace/MemorialPlace";
 import { Pagination } from "@/components/shared/Pagination";
-import { memorialPlaces } from "@/data/memorialPlacesData";
+import { getMemorialPlaces } from "@/dataAccess/memorialPlaces";
 import { PageProps } from "@/types";
 
-export default function MemorialPlacesList({ currentPage }: PageProps) {
+export default async function MemorialPlacesList({ currentPage }: PageProps) {
+  const memorialPlaces = await getMemorialPlaces();
   const ITEMS_PER_PAGE = 4;
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedMemorialPlaces = memorialPlaces.slice(

@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     news: News;
     galleries: Gallery;
+    'memorial-places': MemorialPlace;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
+    'memorial-places': MemorialPlacesSelect<false> | MemorialPlacesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -235,6 +237,74 @@ export interface Gallery {
   updatedAt: string;
   createdAt: string;
 }
+
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memorial-places".
+ */
+export interface MemorialPlace {
+  id: string;
+  name: string;
+  /**
+   * Generowany automatycznie na podstawie nazwy.
+   */
+  slug?: string | null;
+  location: string;
+  /**
+   * Główny opis miejsca pamięci
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  featuredImage?: (string | null) | Media;
+  /**
+   * Teksty do wyróżnienia (np. napisy z tablicy)
+   */
+  highlight?:
+    | {
+        text: string;
+        align?: ('left' | 'center' | 'right') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Dodatkowy opis wyświetlany po wyróżnionych tekstach
+   */
+  descriptionContinuation?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Galeria zdjęć miejsca pamięci
+   */
+  linkedGallery?: (string | null) | Gallery;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
@@ -274,6 +344,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'galleries';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'memorial-places';
+        value: string | MemorialPlace;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -399,6 +473,30 @@ export interface GalleriesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memorial-places_select".
+ */
+export interface MemorialPlacesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  location?: T;
+  description?: T;
+  featuredImage?: T;
+  highlight?:
+    | T
+    | {
+        text?: T;
+        align?: T;
+        id?: T;
+      };
+  descriptionContinuation?: T;
+  linkedGallery?: T;
+  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
