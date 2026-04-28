@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     news: News;
     galleries: Gallery;
+    literature: Literature;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
+    literature: LiteratureSelect<false> | LiteratureSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -237,6 +239,39 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature".
+ */
+export interface Literature {
+  id: string;
+  title: string;
+  author: string;
+  aboutAuthor?: string | null;
+  publisher?: string | null;
+  isbn?: string | null;
+  format?: string | null;
+  /**
+   * Rodzaj okładki (np. miękka, twarda).
+   */
+  cover?: string | null;
+  coverImage?: (string | null) | Media;
+  edition?: string | null;
+  language?: string | null;
+  numberOfPages?: number | null;
+  chapters?:
+    | {
+        chapterTitle?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -274,6 +309,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'galleries';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'literature';
+        value: string | Literature;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -399,6 +438,32 @@ export interface GalleriesSelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature_select".
+ */
+export interface LiteratureSelect<T extends boolean = true> {
+  title?: T;
+  author?: T;
+  aboutAuthor?: T;
+  publisher?: T;
+  isbn?: T;
+  format?: T;
+  cover?: T;
+  coverImage?: T;
+  edition?: T;
+  language?: T;
+  numberOfPages?: T;
+  chapters?:
+    | T
+    | {
+        chapterTitle?: T;
+        id?: T;
+      };
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

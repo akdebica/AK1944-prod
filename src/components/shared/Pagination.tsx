@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
   currentPage: number;
@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const Pagination = ({ currentPage, totalPages, basePath }: Props) => {
+  const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -18,7 +19,8 @@ export const Pagination = ({ currentPage, totalPages, basePath }: Props) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", page.toString());
 
-    router.push(`${basePath}?${params.toString()}`);
+    const targetPath = basePath ?? pathname;
+    router.push(`${targetPath}?${params.toString()}`);
   };
 
   return (

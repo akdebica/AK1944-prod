@@ -1,32 +1,26 @@
-import type { Book } from "@/app/(client)/historia/literatura/_components/data";
 import { Button } from "@/components/shared/Button/Button";
-import Image from "next/image";
+import { FeaturedImage } from "@/components/shared/FeaturedImage/FeaturedImage";
+import type { Literature } from "@/payload-types";
 
-export const Card = ({ book }: { book: Book }) => (
-  <li className="flex flex-col items-center gap-4 border-b-4 border-greenLight pb-10 last:border-b-0 tablet:flex-row tablet:items-start tablet:gap-10">
+export const Card = ({ book }: { book: Literature }) => (
+  <li className="flex flex-col items-center gap-4 border-b-4 border-greenLight pb-10 last:border-b-0 tablet:flex-row tablet:items-stretch tablet:gap-10">
     <div className="relative flex aspect-square w-72 items-center justify-center">
-      <Image
-        src={book.img ? book.img : "/images/placeholder_image.webp"}
-        alt={
-          book.img
-            ? `Okładka książki ${book.title} autorstwa ${book.autor}`
-            : `Brak zdjęcia okładki książki ${book.title} autorstwa ${book.autor}`
-        }
+      <FeaturedImage
+        featuredImage={book.coverImage}
+        fallbackAlt={`Okładka książki ${book.title} autorstwa ${book.author}`}
         fill
-        sizes="(max-width: 768px) 100vw, 288px"
-        className="h-full w-full object-cover"
       />
     </div>
-    <div className="flex flex-col items-center gap-4 tablet:w-3/4 tablet:items-end">
+    <div className="flex flex-col items-center gap-4 tablet:w-3/4 tablet:items-end tablet:justify-between tablet:gap-0 tablet:self-stretch">
       <div className="flex flex-col items-center gap-2 text-start tablet:items-start tablet:gap-4 desktop:gap-6">
         <h2 className="font-lora text-28 font-bold leading-none tablet:text-32">
-          {book.title} - {book.autor}
+          {book.title} - {book.author}
         </h2>
-        <p className="tablet:text-18">{book.aboutAutor}</p>
+        <p className="tablet:text-18">{book.aboutAuthor}</p>
       </div>
       <Button
         variant="secondary"
-        href={`/historia/literatura/${book.title.toLocaleLowerCase()}`}
+        href={`/historia/literatura/${book.slug}`}
         label="Czytaj dalej"
         ariaDescription="Czytaj dalej"
       >
