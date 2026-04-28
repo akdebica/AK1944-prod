@@ -13,6 +13,10 @@ export const Pagination = ({ currentPage, totalPages, basePath }: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  if (totalPages <= 1) {
+    return null;
+  }
+
   const handlePageChange = (page: number) => {
     if (page === currentPage) return;
 
