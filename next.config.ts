@@ -7,11 +7,7 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   images: {
-    remotePatterns: [
-      { hostname: "ak1944.pl" },
-      { hostname: "wp.ak1944.pl" },
-      { hostname: "localhost", port: "3000" },
-    ],
+    remotePatterns: [{ hostname: "ak1944.pl" }, { hostname: "wp.ak1944.pl" }],
   },
 };
 
