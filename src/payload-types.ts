@@ -72,6 +72,7 @@ export interface Config {
     news: News;
     galleries: Gallery;
     calendar: Calendar;
+    literature: Literature;
     rallies: Rally;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -85,6 +86,7 @@ export interface Config {
     news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
     calendar: CalendarSelect<false> | CalendarSelect<true>;
+    literature: LiteratureSelect<false> | LiteratureSelect<true>;
     rallies: RalliesSelect<false> | RalliesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -268,6 +270,39 @@ export interface Calendar {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature".
+ */
+export interface Literature {
+  id: string;
+  title: string;
+  author: string;
+  aboutAuthor?: string | null;
+  publisher?: string | null;
+  isbn?: string | null;
+  format?: string | null;
+  /**
+   * Rodzaj okładki (np. miękka, twarda).
+   */
+  cover?: string | null;
+  coverImage?: (string | null) | Media;
+  edition?: string | null;
+  language?: string | null;
+  numberOfPages?: number | null;
+  chapters?:
+    | {
+        chapterTitle?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "rallies".
  */
 export interface Rally {
@@ -432,6 +467,10 @@ export interface PayloadLockedDocument {
         value: string | Calendar;
       } | null)
     | ({
+        relationTo: 'literature';
+        value: string | Literature;
+      } | null)
+    | ({
         relationTo: 'rallies';
         value: string | Rally;
       } | null);
@@ -571,6 +610,32 @@ export interface CalendarSelect<T extends boolean = true> {
   date?: T;
   description?: T;
   featuredImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature_select".
+ */
+export interface LiteratureSelect<T extends boolean = true> {
+  title?: T;
+  author?: T;
+  aboutAuthor?: T;
+  publisher?: T;
+  isbn?: T;
+  format?: T;
+  cover?: T;
+  coverImage?: T;
+  edition?: T;
+  language?: T;
+  numberOfPages?: T;
+  chapters?:
+    | T
+    | {
+        chapterTitle?: T;
+        id?: T;
+      };
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

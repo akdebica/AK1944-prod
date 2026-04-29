@@ -79,3 +79,9 @@ export const getExcerpt = (content: string, wordLimit: number) => {
 
   return `${words.slice(0, wordLimit).join(" ")}...`;
 };
+
+export const formatSlug = (value?: string, fallback?: string) => {
+  if (value) return slugify(value);
+  if (fallback) return slugify(fallback);
+  return undefined;
+};

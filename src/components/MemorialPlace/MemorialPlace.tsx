@@ -5,7 +5,7 @@ import { Heading } from "@/components/shared/Heading/Heading";
 import Image from "next/image";
 
 export const MemorialPlace = ({ place }: { place: PlaceDetails }) => (
-  <article className="flex w-full flex-col gap-6 border-b border-textDarkGreen pb-8 font-lora tablet:grid tablet:grid-cols-[1.6fr_1fr] tablet:border-b-4 desktop:grid-cols-3">
+  <article className="flex w-full flex-col gap-6 border-b border-textDarkGreen pb-8 font-lora tablet:grid tablet:grid-cols-[1.6fr_1fr] tablet:border-b-4 desktop:grid-cols-[1fr_1.2fr_0.8fr]">
     <div className="order-1 text-left tablet:order-1 tablet:col-start-1 tablet:col-span-1 desktop:order-2 desktop:col-start-2 desktop:col-span-2">
       <Heading
         variant="h2"
