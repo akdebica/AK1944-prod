@@ -11,7 +11,7 @@ const mapPayloadRallyToRally = (rally: PayloadRally): Rally => {
   const media = typeof rally.featuredImage === "string" ? null : rally.featuredImage;
   
   return {
-    id: parseInt(rally.id, 10) || 0,
+    id: rally.id,
     slug: rally.slug || "",
     title: rally.title,
     date: rally.date || undefined,
@@ -50,7 +50,7 @@ export const getRallyBySlug = async (slug: string): Promise<Rally | null> => {
 
 const mapPayloadRallyToRallyData = (rally: PayloadRally): RallyData => {
   return {
-    id: parseInt(rally.id, 10) || 0,
+    id: rally.id,
     slug: rally.slug || "",
     title: rally.title,
     date: rally.date || undefined,
@@ -84,7 +84,7 @@ export const getRallyDataBySlug = async (slug: string): Promise<RallyData | null
 
 // Rally relation data (for relation pages)
 export interface RallyRelationData {
-  id: number;
+  id: string;
   slug: string;
   title: string;
   date?: string;
@@ -108,7 +108,7 @@ const mapPayloadRallyToRelationData = (rally: PayloadRally): RallyRelationData =
     .filter((img): img is GalleryImage => img !== null);
 
   return {
-    id: parseInt(rally.id, 10) || 0,
+    id: rally.id,
     slug: rally.slug || "",
     title: rally.title,
     date: rally.date || undefined,
