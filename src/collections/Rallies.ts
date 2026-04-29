@@ -62,7 +62,8 @@ export const Rallies: CollectionConfig = {
       type: "richText",
       label: "Zaproszenie na rajd",
       admin: {
-        description: "Pełny tekst zaproszenia wyświetlany na początku strony rajdu",
+        description:
+          "Pełny tekst zaproszenia wyświetlany na początku strony rajdu",
       },
     },
     {
@@ -243,19 +244,8 @@ export const Rallies: CollectionConfig = {
     },
     {
       name: "relation",
-      type: "array",
+      type: "richText",
       label: "Relacja z rajdu",
-      labels: {
-        singular: "Akapit",
-        plural: "Relacja",
-      },
-      fields: [
-        {
-          name: "item",
-          type: "textarea",
-          label: "Akapit",
-        },
-      ],
     },
     {
       name: "linkedGallery",

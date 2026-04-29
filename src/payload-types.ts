@@ -409,12 +409,21 @@ export interface Rally {
         id?: string | null;
       }[]
     | null;
-  relation?:
-    | {
-        item?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  relation?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
    * Galeria zdjęć z rajdu
    */
@@ -708,12 +717,7 @@ export interface RalliesSelect<T extends boolean = true> {
         item?: T;
         id?: T;
       };
-  relation?:
-    | T
-    | {
-        item?: T;
-        id?: T;
-      };
+  relation?: T;
   linkedGallery?: T;
   updatedAt?: T;
   createdAt?: T;

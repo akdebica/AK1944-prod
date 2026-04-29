@@ -8,8 +8,9 @@ import { fetchCollection, fetchBySlug } from "./fetchPayloadCollection";
 import { getPayload } from "payload";
 
 const mapPayloadRallyToRally = (rally: PayloadRally): Rally => {
-  const media = typeof rally.featuredImage === "string" ? null : rally.featuredImage;
-  
+  const media =
+    typeof rally.featuredImage === "string" ? null : rally.featuredImage;
+
   return {
     id: rally.id,
     slug: rally.slug || "",
@@ -33,7 +34,7 @@ export const getRallies = async (): Promise<Rally[]> => {
     console.error("Error fetching rallies:", error);
     throw new Error(error);
   }
-    
+
   return docs.map(mapPayloadRallyToRally);
 };
 
@@ -56,22 +57,34 @@ const mapPayloadRallyToRallyData = (rally: PayloadRally): RallyData => {
     date: rally.date || undefined,
     invite: rally.invite ? extractTextFromRichText(rally.invite) : undefined,
     purpose: rally.purpose || undefined,
-    purposeList: rally.purposeList?.map((item) => item.item || "").filter(Boolean),
+    purposeList: rally.purposeList
+      ?.map((item) => item.item || "")
+      .filter(Boolean),
     rulesList: rally.rulesList?.map((item) => item.item || "").filter(Boolean),
-    adviceList: rally.adviceList?.map((item) => item.item || "").filter(Boolean),
+    adviceList: rally.adviceList
+      ?.map((item) => item.item || "")
+      .filter(Boolean),
     rewards: rally.rewards?.map((item) => item.item || "").filter(Boolean),
     transportHeader: rally.transportHeader || undefined,
-    transportList: rally.transportList?.map((item) => item.item || "").filter(Boolean),
+    transportList: rally.transportList
+      ?.map((item) => item.item || "")
+      .filter(Boolean),
     warning: rally.warning || undefined,
-    programList: rally.programList?.map((item) => item.item || "").filter(Boolean),
-    organizators: rally.organizators?.map((item) => item.item || "").filter(Boolean),
+    programList: rally.programList
+      ?.map((item) => item.item || "")
+      .filter(Boolean),
+    organizators: rally.organizators
+      ?.map((item) => item.item || "")
+      .filter(Boolean),
     partners: rally.partners?.map((item) => item.item || "").filter(Boolean),
     taskInfo: rally.taskInfo || undefined,
     tasks: rally.tasks?.map((item) => item.item || "").filter(Boolean),
   };
 };
 
-export const getRallyDataBySlug = async (slug: string): Promise<RallyData | null> => {
+export const getRallyDataBySlug = async (
+  slug: string,
+): Promise<RallyData | null> => {
   const { doc, error } = await fetchBySlug("rallies", slug);
 
   if (error) {
@@ -88,13 +101,16 @@ export interface RallyRelationData {
   slug: string;
   title: string;
   date?: string;
-  relation: string[];
+  relation: PayloadRally["relation"] | null;
   images: GalleryImage[];
 }
 
-const mapPayloadRallyToRelationData = (rally: PayloadRally): RallyRelationData => {
-  const gallery = typeof rally.linkedGallery === "string" ? null : rally.linkedGallery;
-  
+const mapPayloadRallyToRelationData = (
+  rally: PayloadRally,
+): RallyRelationData => {
+  const gallery =
+    typeof rally.linkedGallery === "string" ? null : rally.linkedGallery;
+
   const images: GalleryImage[] = (gallery?.images || [])
     .map((item) => {
       const media = typeof item.image === "string" ? null : item.image;
@@ -112,12 +128,14 @@ const mapPayloadRallyToRelationData = (rally: PayloadRally): RallyRelationData =
     slug: rally.slug || "",
     title: rally.title,
     date: rally.date || undefined,
-    relation: rally.relation?.map((item) => item.item || "").filter(Boolean) || [],
+    relation: rally.relation || null,
     images,
   };
 };
 
-export const getRallyRelationBySlug = async (slug: string): Promise<RallyRelationData | null> => {
+export const getRallyRelationBySlug = async (
+  slug: string,
+): Promise<RallyRelationData | null> => {
   try {
     const payload = await getPayload({ config });
     const result = await payload.find({
@@ -130,7 +148,7 @@ export const getRallyRelationBySlug = async (slug: string): Promise<RallyRelatio
       limit: 1,
       depth: 2,
     });
-    
+
     if (result.docs.length === 0) {
       return null;
     }
