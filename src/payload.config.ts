@@ -10,6 +10,7 @@ import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { News } from "./collections/News";
 import { Galleries } from "./collections/Galleries";
+import { Rallies } from "./collections/Rallies";
 import { Calendar } from "./collections/Calendar";
 import { Literature } from "./collections/Literature";
 
@@ -32,7 +33,7 @@ export default buildConfig({
     fallbackLanguage: "pl",
     supportedLanguages: { pl },
   },
-  collections: [Users, Media, News, Galleries, Calendar, Literature],
+  collections: [Users, Media, News, Galleries, Calendar, Literature, Rallies],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],
   }),
