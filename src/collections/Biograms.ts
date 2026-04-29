@@ -24,12 +24,12 @@ export const Biograms: CollectionConfig = {
     },
     {
       name: "birthDate",
-      type: "date",
+      type: "text",
       label: "Data urodzenia",
     },
     {
       name: "deathDate",
-      type: "date",
+      type: "text",
       label: "Data śmierci",
     },
     {

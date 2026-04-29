@@ -19,7 +19,7 @@ export default async function ArchivePage({ searchParams }: PageProps) {
 
   const { docs: posts, totalPages } = await fetchCollection({
     collection: "news",
-    query: { limit: ITEMS_PER_PAGE, pagination: true, page: currentPage },
+    query: { limit: ITEMS_PER_PAGE, pagination: true, page: currentPage},
   });
 
   return (

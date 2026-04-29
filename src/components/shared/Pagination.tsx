@@ -24,7 +24,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: Props) => {
     params.set("page", page.toString());
 
     const targetPath = basePath ?? pathname;
-    router.push(`${targetPath}?${params.toString()}`);
+    router.push(`${targetPath}?${params.toString()}`, { scroll: false });
   };
 
   return (
