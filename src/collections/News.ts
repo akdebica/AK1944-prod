@@ -1,12 +1,5 @@
+import { formatSlug } from "@/utils";
 import type { CollectionConfig } from "payload";
-
-import { slugify } from "@/utils";
-
-const formatSlug = (value?: string, fallback?: string) => {
-  if (value) return slugify(value);
-  if (fallback) return slugify(fallback);
-  return undefined;
-};
 
 export const News: CollectionConfig = {
   slug: "news",
@@ -21,7 +14,11 @@ export const News: CollectionConfig = {
     afterChange: [
       async ({ doc, req, operation, previousDoc }) => {
         if (operation === "create" || operation === "update") {
-          if (doc.createGallery && doc.galleryImages && doc.galleryImages.length > 0) {
+          if (
+            doc.createGallery &&
+            doc.galleryImages &&
+            doc.galleryImages.length > 0
+          ) {
             if (!doc.linkedGallery) {
               try {
                 const newGallery = await req.payload.create({
@@ -47,7 +44,7 @@ export const News: CollectionConfig = {
                 });
               } catch (error) {
                 req.payload.logger.error(
-                  `Failed to create gallery for news ${doc.id}: ${error}`
+                  `Failed to create gallery for news ${doc.id}: ${error}`,
                 );
               }
             } else {
@@ -65,7 +62,7 @@ export const News: CollectionConfig = {
                 });
               } catch (error) {
                 req.payload.logger.error(
-                  `Failed to update gallery ${doc.linkedGallery} for news ${doc.id}: ${error}`
+                  `Failed to update gallery ${doc.linkedGallery} for news ${doc.id}: ${error}`,
                 );
               }
             }
@@ -81,7 +78,7 @@ export const News: CollectionConfig = {
               });
             } catch (error) {
               req.payload.logger.error(
-                `Failed to unlink gallery from news ${doc.id}: ${error}`
+                `Failed to unlink gallery from news ${doc.id}: ${error}`,
               );
             }
           }
@@ -105,7 +102,7 @@ export const News: CollectionConfig = {
           }
         } catch (error) {
           req.payload.logger.error(
-            `Failed to delete linked gallery for news ${id}: ${error}`
+            `Failed to delete linked gallery for news ${id}: ${error}`,
           );
         }
       },
