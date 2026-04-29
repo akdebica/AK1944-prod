@@ -4,6 +4,7 @@ import { Rally } from "@/app/(client)/szlak-partyzancki/rajdy/_models/rally";
 import { RallyData } from "@/app/(client)/szlak-partyzancki/rajdy/_models/rallyData";
 import type { GalleryImage } from "@/types";
 import { extractTextFromRichText } from "@/utils";
+import { fetchCollection, fetchBySlug } from "./fetchPayloadCollection";
 import { getPayload } from "payload";
 
 const mapPayloadRallyToRally = (rally: PayloadRally): Rally => {
@@ -20,45 +21,31 @@ const mapPayloadRallyToRally = (rally: PayloadRally): Rally => {
 };
 
 export const getRallies = async (): Promise<Rally[]> => {
-  try {
-    const payload = await getPayload({ config });
-    const result = await payload.find({
-      collection: "rallies",
+  const { docs, error } = await fetchCollection({
+    collection: "rallies",
+    query: {
       limit: 100,
       sort: "-publishedAt",
-      depth: 2,
-    });
-    
-    return result.docs.map(mapPayloadRallyToRally);
-  } catch (error) {
+    },
+  });
+
+  if (error) {
     console.error("Error fetching rallies:", error);
-    throw error;
+    throw new Error(error);
   }
+    
+  return docs.map(mapPayloadRallyToRally);
 };
 
 export const getRallyBySlug = async (slug: string): Promise<Rally | null> => {
-  try {
-    const payload = await getPayload({ config });
-    const result = await payload.find({
-      collection: "rallies",
-      where: {
-        slug: {
-          equals: slug,
-        },
-      },
-      limit: 1,
-      depth: 2,
-    });
-    
-    if (result.docs.length === 0) {
-      return null;
-    }
+  const { doc, error } = await fetchBySlug("rallies", slug);
 
-    return mapPayloadRallyToRally(result.docs[0]);
-  } catch (error) {
+  if (error) {
     console.error("Error fetching rally by slug:", error);
-    throw error;
+    throw new Error(error);
   }
+
+  return doc ? mapPayloadRallyToRally(doc) : null;
 };
 
 const mapPayloadRallyToRallyData = (rally: PayloadRally): RallyData => {
@@ -85,28 +72,14 @@ const mapPayloadRallyToRallyData = (rally: PayloadRally): RallyData => {
 };
 
 export const getRallyDataBySlug = async (slug: string): Promise<RallyData | null> => {
-  try {
-    const payload = await getPayload({ config });
-    const result = await payload.find({
-      collection: "rallies",
-      where: {
-        slug: {
-          equals: slug,
-        },
-      },
-      limit: 1,
-      depth: 2,
-    });
-    
-    if (result.docs.length === 0) {
-      return null;
-    }
+  const { doc, error } = await fetchBySlug("rallies", slug);
 
-    return mapPayloadRallyToRallyData(result.docs[0]);
-  } catch (error) {
+  if (error) {
     console.error("Error fetching rally data by slug:", error);
-    throw error;
+    throw new Error(error);
   }
+
+  return doc ? mapPayloadRallyToRallyData(doc) : null;
 };
 
 // Rally relation data (for relation pages)

@@ -287,7 +287,7 @@ export interface Rally {
   description?: string | null;
   featuredImage?: (string | null) | Media;
   /**
-   * Pełny tekst zaproszenia na rajd
+   * Pełny tekst zaproszenia wyświetlany na początku strony rajdu
    */
   invite?: {
     root: {
@@ -304,6 +304,9 @@ export interface Rally {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Tekst wyświetlany przed listą celów
+   */
   purpose?: string | null;
   purposeList?:
     | {
@@ -329,6 +332,9 @@ export interface Rally {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Tekst wyświetlany przed listą informacji o transporcie
+   */
   transportHeader?: string | null;
   transportList?:
     | {
@@ -336,6 +342,9 @@ export interface Rally {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ważne ostrzeżenia lub informacje dla uczestników
+   */
   warning?: string | null;
   programList?:
     | {
@@ -355,6 +364,9 @@ export interface Rally {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Tekst wyświetlany przed listą zadań przedrajdowych
+   */
   taskInfo?: string | null;
   tasks?:
     | {
@@ -372,7 +384,6 @@ export interface Rally {
    * Galeria zdjęć z rajdu
    */
   linkedGallery?: (string | null) | Gallery;
-  publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -639,7 +650,6 @@ export interface RalliesSelect<T extends boolean = true> {
         id?: T;
       };
   linkedGallery?: T;
-  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

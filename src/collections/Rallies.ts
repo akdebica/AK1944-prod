@@ -60,20 +60,23 @@ export const Rallies: CollectionConfig = {
     {
       name: "invite",
       type: "richText",
-      label: "Zaproszenie",
+      label: "Zaproszenie na rajd",
       admin: {
-        description: "Pełny tekst zaproszenia na rajd",
+        description: "Pełny tekst zaproszenia wyświetlany na początku strony rajdu",
       },
     },
     {
       name: "purpose",
       type: "textarea",
-      label: "Cel rajdu",
+      label: "Cele rajdu - tekst wprowadzający",
+      admin: {
+        description: "Tekst wyświetlany przed listą celów",
+      },
     },
     {
       name: "purposeList",
       type: "array",
-      label: "Lista celów",
+      label: "Cele rajdu - lista",
       labels: {
         singular: "Cel",
         plural: "Cele",
@@ -89,10 +92,10 @@ export const Rallies: CollectionConfig = {
     {
       name: "rulesList",
       type: "array",
-      label: "Zasady uczestnictwa",
+      label: "Informacja o warunkach uczestnictwa",
       labels: {
-        singular: "Zasada",
-        plural: "Zasady",
+        singular: "Warunek",
+        plural: "Warunki",
       },
       fields: [
         {
@@ -105,10 +108,10 @@ export const Rallies: CollectionConfig = {
     {
       name: "adviceList",
       type: "array",
-      label: "Wskazówki",
+      label: "Warunki turystyczne szlaku i zalecenia dla uczestników",
       labels: {
-        singular: "Wskazówka",
-        plural: "Wskazówki",
+        singular: "Zalecenie",
+        plural: "Zalecenia",
       },
       fields: [
         {
@@ -121,10 +124,10 @@ export const Rallies: CollectionConfig = {
     {
       name: "rewards",
       type: "array",
-      label: "Nagrody",
+      label: "Trofea i nagrody",
       labels: {
-        singular: "Nagroda",
-        plural: "Nagrody",
+        singular: "Nagroda/Trofeum",
+        plural: "Nagrody i trofea",
       },
       fields: [
         {
@@ -137,12 +140,15 @@ export const Rallies: CollectionConfig = {
     {
       name: "transportHeader",
       type: "text",
-      label: "Nagłówek transportu",
+      label: "Transport i miejsce startu - nagłówek",
+      admin: {
+        description: "Tekst wyświetlany przed listą informacji o transporcie",
+      },
     },
     {
       name: "transportList",
       type: "array",
-      label: "Informacje o transporcie",
+      label: "Transport i miejsce startu - lista",
       labels: {
         singular: "Informacja",
         plural: "Informacje",
@@ -158,7 +164,10 @@ export const Rallies: CollectionConfig = {
     {
       name: "warning",
       type: "textarea",
-      label: "Ważne informacje",
+      label: "UWAGA - ważne informacje",
+      admin: {
+        description: "Ważne ostrzeżenia lub informacje dla uczestników",
+      },
     },
     {
       name: "programList",
@@ -179,7 +188,7 @@ export const Rallies: CollectionConfig = {
     {
       name: "organizators",
       type: "array",
-      label: "Organizatorzy",
+      label: "Organizatorzy zapewniają",
       labels: {
         singular: "Organizator",
         plural: "Organizatorzy",
@@ -211,12 +220,15 @@ export const Rallies: CollectionConfig = {
     {
       name: "taskInfo",
       type: "textarea",
-      label: "Informacje o zadaniach",
+      label: "Zadania przedrajdowe - tekst wprowadzający",
+      admin: {
+        description: "Tekst wyświetlany przed listą zadań przedrajdowych",
+      },
     },
     {
       name: "tasks",
       type: "array",
-      label: "Zadania",
+      label: "Zadania przedrajdowe - lista",
       labels: {
         singular: "Zadanie",
         plural: "Zadania",
@@ -253,11 +265,6 @@ export const Rallies: CollectionConfig = {
       admin: {
         description: "Galeria zdjęć z rajdu",
       },
-    },
-    {
-      name: "publishedAt",
-      type: "date",
-      label: "Data publikacji",
     },
   ],
 };
