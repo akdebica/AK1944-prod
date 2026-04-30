@@ -13,6 +13,7 @@ import { Galleries } from "./collections/Galleries";
 import { Rallies } from "./collections/Rallies";
 import { Calendar } from "./collections/Calendar";
 import { Literature } from "./collections/Literature";
+import { Biograms } from "@/collections/Biograms";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -33,7 +34,16 @@ export default buildConfig({
     fallbackLanguage: "pl",
     supportedLanguages: { pl },
   },
-  collections: [Users, Media, News, Galleries, Calendar, Literature, Rallies],
+  collections: [
+    Users,
+    Media,
+    News,
+    Galleries,
+    Calendar,
+    Literature,
+    Rallies,
+    Biograms,
+  ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],
   }),

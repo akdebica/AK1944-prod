@@ -1,12 +1,12 @@
 import { Button } from "@/components/shared/Button/Button";
+import type { Biogram } from "@/payload-types";
 import { BiogramHistory } from "./biogramTemplate";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
-import { BiogramHistoryProps } from "../models/biogram";
 import MorePeopleBiograms from "./moreBiograms";
 
-export const BiogramHistoryPage = ({ biogram }: BiogramHistoryProps) => {
+export const BiogramHistoryPage = ({ biogram }: { biogram: Biogram }) => {
   return (
     <div className="pb-20">
       <Container
@@ -15,7 +15,7 @@ export const BiogramHistoryPage = ({ biogram }: BiogramHistoryProps) => {
       >
         <Breadcrumbs />
         <Heading variant="h2" color="green" contrast="yellow">
-          {biogram.title}
+          {biogram.name}
         </Heading>
         <BiogramHistory biogram={biogram} />
         <Button
@@ -26,7 +26,7 @@ export const BiogramHistoryPage = ({ biogram }: BiogramHistoryProps) => {
           href={"/inwentarz-grobow"}
           disabled
         />
-        <MorePeopleBiograms />
+        <MorePeopleBiograms currentSlug={biogram.slug ?? undefined} />
       </Container>
     </div>
   );

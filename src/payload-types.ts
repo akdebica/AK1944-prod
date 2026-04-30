@@ -74,6 +74,7 @@ export interface Config {
     calendar: Calendar;
     literature: Literature;
     rallies: Rally;
+    biograms: Biogram;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     calendar: CalendarSelect<false> | CalendarSelect<true>;
     literature: LiteratureSelect<false> | LiteratureSelect<true>;
     rallies: RalliesSelect<false> | RalliesSelect<true>;
+    biograms: BiogramsSelect<false> | BiogramsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -433,6 +435,26 @@ export interface Rally {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "biograms".
+ */
+export interface Biogram {
+  id: string;
+  name: string;
+  pseudonym?: string | null;
+  birthDate?: string | null;
+  deathDate?: string | null;
+  burialPlace?: string | null;
+  biography?: string | null;
+  portrait?: (string | null) | Media;
+  /**
+   * Generowany automatycznie na podstawie imienia i nazwiska.
+   */
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -482,6 +504,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'rallies';
         value: string | Rally;
+      } | null)
+    | ({
+        relationTo: 'biograms';
+        value: string | Biogram;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -719,6 +745,22 @@ export interface RalliesSelect<T extends boolean = true> {
       };
   relation?: T;
   linkedGallery?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "biograms_select".
+ */
+export interface BiogramsSelect<T extends boolean = true> {
+  name?: T;
+  pseudonym?: T;
+  birthDate?: T;
+  deathDate?: T;
+  burialPlace?: T;
+  biography?: T;
+  portrait?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,9 +1,15 @@
 import { BackgroundImage } from "@/components/shared/BackgroundImage/BackgroundImage";
+import { FeaturedImage } from "@/components/shared/FeaturedImage/FeaturedImage";
 import { Heading } from "@/components/shared/Heading/Heading";
-import Image from "next/image";
-import { BiogramHistoryProps } from "../models/biogram";
+import { StampIcon } from "@/icons/StampIcon";
+import { StripesIcon } from "@/icons/StripesIcon";
+import type { Biogram } from "@/payload-types";
 
-export const BiogramHistory = ({ biogram }: BiogramHistoryProps) => {
+export const BiogramHistory = ({ biogram }: { biogram: Biogram }) => {
+  const paragraphs = biogram.biography
+    ?.split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
   const biogramData = [
     { label: "Data i miejsce urodzenia:", value: biogram.birthDate },
     { label: "Data i miejsce śmierci:", value: biogram.deathDate },
@@ -15,73 +21,49 @@ export const BiogramHistory = ({ biogram }: BiogramHistoryProps) => {
       <BackgroundImage
         alt=""
         src="/images/history/main/paper.png"
-        width="768"
-        height="948"
         className="absolute object-fill contrast:hidden"
+        sizes="100vw"
         aria-hidden="true"
       >
-        <div className="mx-auto w-full max-w-[767px] px-6 py-12 mobile:pt-28 tablet:max-w-[1279px] tablet:pt-0 desktop:max-w-[1440px] desktop:px-18 desktop:py-18">
+        <div className="mx-auto w-full max-w-[767px] px-6 py-12 mobile:pt-28 tablet:max-w-[1279px] tablet:pt-0 desktop:max-w-[1440px] desktop:px-18 desktop:py-28">
           <Heading variant="h2" contrast="yellow" color="green">
-            {biogram.title}
+            {biogram.name}
           </Heading>
-          <Heading className="h4" contrast="yellow" color="greenB">
-            ps. {biogram.pseudonym.map((p: string) => `"${p}"`).join(", ")}
-          </Heading>
+          {biogram.pseudonym ? (
+            <Heading className="h4" contrast="yellow" color="greenB">
+              ps. {biogram.pseudonym}
+            </Heading>
+          ) : null}
 
-          <div className="flex flex-col desktop:flex-row">
-            <div className="relative order-1 mx-auto aspect-[0.79] h-[400px] w-full max-w-[600px] tablet:h-[600px] desktop:order-2 desktop:h-[600px] desktop:max-w-[600px]">
-              <Image
-                src={biogram.imageUrl}
-                alt={"Zdjęcie weterana Armii Krajowej"}
+          <div className="desktop:flow-root">
+            <div className="relative mx-auto my-6 aspect-[0.79] h-[400px] w-full max-w-[600px] tablet:h-[600px] desktop:float-right desktop:mb-6 desktop:ml-10 desktop:mt-2 desktop:h-[600px] desktop:w-[450px] desktop:max-w-[450px]">
+              <FeaturedImage
+                featuredImage={biogram.portrait}
+                fallbackAlt={"Zdjęcie weterana Armii Krajowej"}
                 fill
-                sizes="(max-width: 768px) 100vw, 600px"
-                className="rounded object-cover desktop:ml-10"
+                className="rounded object-cover"
               />
-
-              <Image
-                src="/images/biogramy/znaczek.png"
-                alt="Pieczątka"
-                width={160}
-                height={160}
-                className="pointer-events-none absolute bottom-[-20px] right-[240px] h-[90px] w-[90px] select-none desktop:bottom-[-60px] desktop:right-[430px] desktop:h-[160px] desktop:w-[160px]"
-              />
-
-              <Image
-                src="/images/biogramy/paski.png"
-                alt="Pasek"
-                width={250}
-                height={20}
-                className="pointer-events-none absolute right-3 top-4 h-[40px] w-[150px] select-none desktop:right-[20px] desktop:top-[-20px] desktop:h-[50px] desktop:w-[250px]"
-              />
-            </div>
-
-            <div className="order-2 flex w-full flex-col desktop:order-1 desktop:w-5/6">
-              <div className="pt-5 font-courier text-18">
-                {biogramData.map((item, index) => (
-                  <div key={index}>
-                    <span>{item.label}&nbsp;</span>
-                    <span className="font-bold text-textDarkGreen">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
+              <div className="absolute -right-3 -top-3 tablet:-right-6 tablet:-top-6 desktop:-right-12 desktop:-top-10">
+                <StripesIcon className="h-full w-full max-w-[120px] tablet:max-w-[252px]" />
               </div>
-
-              <div>
-                {biogram.description.map((paragraph, idx) => (
-                  <p
-                    key={idx}
-                    className="my-6 font-courier text-18 text-textDarkGreen"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="absolute -bottom-6 -left-6 tablet:-bottom-6 tablet:-left-6 desktop:-bottom-10 desktop:-left-10">
+                <StampIcon className="h-full w-full max-w-[80px] tablet:max-w-[158px]" />
               </div>
             </div>
-          </div>
-          <div>
-            {Array.isArray(biogram.descriptionSecond) &&
-              biogram.descriptionSecond.map((paragraph, idx) => (
+
+            <div className="pt-5 font-courier text-18">
+              {biogramData.map((item, index) => (
+                <div key={index}>
+                  <span>{item.label}&nbsp;</span>
+                  <span className="font-bold text-textDarkGreen">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              {paragraphs?.map((paragraph, idx) => (
                 <p
                   key={idx}
                   className="my-6 font-courier text-18 text-textDarkGreen"
@@ -89,6 +71,7 @@ export const BiogramHistory = ({ biogram }: BiogramHistoryProps) => {
                   {paragraph}
                 </p>
               ))}
+            </div>
           </div>
         </div>
       </BackgroundImage>

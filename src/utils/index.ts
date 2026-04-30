@@ -85,3 +85,61 @@ export const formatSlug = (value?: string, fallback?: string) => {
   if (fallback) return slugify(fallback);
   return undefined;
 };
+
+export const formatBiogramDate = (dateString?: string | null): string => {
+  if (!dateString) return "";
+
+  // Jeśli data jest już w formacie DD.MM.YYYY, zwróć bez zmian
+  if (/^\d{2}\.\d{2}\.\d{4}$/.test(dateString.trim())) {
+    return dateString.trim();
+  }
+
+  // Mapa polskich nazw miesięcy (dopełniacz)
+  const monthMap: Record<string, string> = {
+    stycznia: "01",
+    lutego: "02",
+    marca: "03",
+    kwietnia: "04",
+    maja: "05",
+    czerwca: "06",
+    lipca: "07",
+    sierpnia: "08",
+    września: "09",
+    października: "10",
+    listopada: "11",
+    grudnia: "12",
+    // Dodaj też mianownik na wszelki wypadek
+    styczeń: "01",
+    luty: "02",
+    marzec: "03",
+    kwiecień: "04",
+    maj: "05",
+    czerwiec: "06",
+    lipiec: "07",
+    sierpień: "08",
+    wrzesień: "09",
+    październik: "10",
+    listopad: "11",
+    grudzień: "12",
+  };
+
+  // Usuń miejsce (wszystko po przecinku)
+  const dateOnly = dateString.split(",")[0].trim();
+
+  // Szukaj wzorca: dzień miesiąc_słownie rok (z obsługą polskich znaków)
+  const match = dateOnly.match(/(\d{1,2})\s+([\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)\s+(\d{4})/);
+
+  if (match) {
+    const day = match[1].padStart(2, "0");
+    const monthName = match[2].toLowerCase();
+    const year = match[3];
+    const month = monthMap[monthName];
+
+    if (month) {
+      return `${day}.${month}.${year}`;
+    }
+  }
+
+  // Jeśli nie udało się przekonwertować, zwróć oryginalny tekst bez miejsca
+  return dateOnly;
+};
