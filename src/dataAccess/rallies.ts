@@ -21,11 +21,17 @@ const mapPayloadRallyToRally = (rally: PayloadRally): Rally => {
   };
 };
 
-export const getRallies = async (): Promise<Rally[]> => {
-  const { docs, error } = await fetchCollection({
+export const getRallies = async (options?: {
+  limit?: number;
+  page?: number;
+  pagination?: boolean;
+}): Promise<{ rallies: Rally[]; totalPages: number }> => {
+  const { docs, error, totalPages } = await fetchCollection({
     collection: "rallies",
     query: {
-      limit: 100,
+      limit: options?.limit ?? 100,
+      page: options?.page,
+      pagination: options?.pagination,
       sort: "-publishedAt",
     },
   });
@@ -35,7 +41,10 @@ export const getRallies = async (): Promise<Rally[]> => {
     throw new Error(error);
   }
 
-  return docs.map(mapPayloadRallyToRally);
+  return {
+    rallies: docs.map(mapPayloadRallyToRally),
+    totalPages: totalPages || 0,
+  };
 };
 
 export const getRallyBySlug = async (slug: string): Promise<Rally | null> => {

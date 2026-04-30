@@ -13,25 +13,20 @@ interface GalleryProps {
   title: string;
   galleries: GalleryData[];
   currentPage: number;
-  itemsPerPage?: number;
+  totalPages: number;
 }
 
 export const Gallery = ({
   title,
   galleries,
   currentPage,
-  itemsPerPage = 4,
+  totalPages,
 }: GalleryProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedGalleryImages, setSelectedGalleryImages] = useState<
     GalleryImage[]
   >([]);
-
-  const totalPages = Math.ceil(galleries.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentGalleries = galleries.slice(startIndex, endIndex);
 
   const handleImageClick = (galleryImages: GalleryImage[], index: number) => {
     setSelectedGalleryImages(galleryImages);
@@ -50,7 +45,7 @@ export const Gallery = ({
         </div>
 
         <div className="space-y-8">
-          {currentGalleries.map((gallery) => (
+          {galleries.map((gallery) => (
             <GalleryItem
               key={gallery.id}
               subtitle={gallery.subtitle}

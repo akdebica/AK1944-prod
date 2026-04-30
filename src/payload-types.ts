@@ -514,11 +514,6 @@ export interface MemorialPlace {
     };
     [k: string]: unknown;
   } | null;
-  /**
-   * Galeria zdjęć miejsca pamięci
-   */
-  linkedGallery?: (string | null) | Gallery;
-  publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -855,8 +850,6 @@ export interface MemorialPlacesSelect<T extends boolean = true> {
         id?: T;
       };
   descriptionContinuation?: T;
-  linkedGallery?: T;
-  publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

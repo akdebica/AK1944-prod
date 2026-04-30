@@ -104,19 +104,5 @@ export const MemorialPlaces: CollectionConfig = {
         description: "Dodatkowy opis wyświetlany po wyróżnionych tekstach",
       },
     },
-    {
-      name: "linkedGallery",
-      type: "relationship",
-      label: "Powiązana galeria",
-      relationTo: "galleries",
-      admin: {
-        description: "Galeria zdjęć miejsca pamięci",
-      },
-    },
-    {
-      name: "publishedAt",
-      type: "date",
-      label: "Data publikacji",
-    },
   ],
 };

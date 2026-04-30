@@ -10,8 +10,8 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  const memorialPlaces = await getMemorialPlaces();
-  return memorialPlaces.map((place) => ({
+  const { places } = await getMemorialPlaces({ limit: 100, pagination: false });
+  return places.map((place) => ({
     slug: place.slug,
   }));
 }
@@ -23,15 +23,12 @@ export default async function Page({ params }: PageProps) {
   if (!place) {
     notFound();
   }
-  
-  const allPlaces = await getMemorialPlaces();
-  const otherPlaces = allPlaces.filter((p) => p.slug !== place.slug);
 
   return (
     <Container className="mx-auto max-w-5xl p-4 pb-20">
       <MemorialHeadingSection name={place.name} location={place.location} />
       <MemorialContentSection place={place} />
-      {otherPlaces.length > 0 && <MemorialRelatedPlaces places={otherPlaces} />}
+      <MemorialRelatedPlaces currentSlug={place.slug} />
     </Container>
   );
 }

@@ -3,25 +3,25 @@ import { Pagination } from "@/components/shared/Pagination";
 import { getMemorialPlaces } from "@/dataAccess/memorialPlaces";
 import { PageProps } from "@/types";
 
+const ITEMS_PER_PAGE = 4;
+
 export default async function MemorialPlacesList({ currentPage }: PageProps) {
-  const memorialPlaces = await getMemorialPlaces();
-  const ITEMS_PER_PAGE = 4;
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedMemorialPlaces = memorialPlaces.slice(
-    start,
-    start + ITEMS_PER_PAGE,
-  );
+  const { places, totalPages } = await getMemorialPlaces({
+    limit: ITEMS_PER_PAGE,
+    page: currentPage,
+    pagination: true,
+  });
 
   return (
     <>
       <div className="mt-10 space-y-10">
-        {paginatedMemorialPlaces.map((miejsce) => (
+        {places.map((miejsce) => (
           <MemorialPlace key={miejsce.slug} place={miejsce} />
         ))}
       </div>
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(memorialPlaces.length / ITEMS_PER_PAGE)}
+        totalPages={totalPages}
         basePath="/zwiazek/miejsca-pamieci"
       />
     </>

@@ -14,7 +14,11 @@ export default async function GalleryPage({ searchParams }: SearchParamsProps) {
   const page = parseInt(params.page || "1", 10);
   const currentPage = isNaN(page) || page < 1 ? 1 : page;
 
-  const galleries = await getGalleries();
+  const { galleries, totalPages } = await getGalleries({
+    limit: 4,
+    page: currentPage,
+    pagination: true,
+  });
 
   if (galleries.length === 0) {
     return (
@@ -31,6 +35,7 @@ export default async function GalleryPage({ searchParams }: SearchParamsProps) {
       title="Galeria zdjęć"
       galleries={galleries}
       currentPage={currentPage}
+      totalPages={totalPages}
     />
   );
 }

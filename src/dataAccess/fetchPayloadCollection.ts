@@ -4,7 +4,7 @@ import { getPayload, type FindArgs } from "payload";
 
 type CollectionMap = Pick<
   Config["collections"],
-  "calendar" | "news" | "literature" | "rallies" | "biograms"
+  "calendar" | "news" | "literature" | "rallies" | "biograms" | "memorial-places"
 >;
 type CollectionQuery = Pick<
   FindArgs,
