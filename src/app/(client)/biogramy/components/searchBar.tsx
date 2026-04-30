@@ -27,7 +27,7 @@ export const SearchBar = ({ searchQuery, onSearch }: SearchBarProps) => {
           name="search"
           type="text"
           placeholder="Wyszukaj..."
-          className="bg-transparent w-full rounded border border-greenMain py-2 pl-10 pr-4 text-sm focus:border-greenMain focus:outline-none"
+          className="w-[80%] bg-transparent rounded placeholder-greenMain border border-greenMain py-2 pl-10 pr-4 text-sm focus:border-greenMain focus:outline-none"
           value={searchQuery}
           onChange={handleInputChange}
         />
