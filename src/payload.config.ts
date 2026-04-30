@@ -11,6 +11,10 @@ import { Media } from "./collections/Media";
 import { News } from "./collections/News";
 import { Galleries } from "./collections/Galleries";
 import { MemorialPlaces } from "./collections/MemorialPlaces";
+import { Rallies } from "./collections/Rallies";
+import { Calendar } from "./collections/Calendar";
+import { Literature } from "./collections/Literature";
+import { Biograms } from "@/collections/Biograms";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -31,7 +35,17 @@ export default buildConfig({
     fallbackLanguage: "pl",
     supportedLanguages: { pl },
   },
-  collections: [Users, Media, News, Galleries, MemorialPlaces],
+  collections: [
+    Users,
+    Media,
+    News,
+    Galleries,
+    Calendar,
+    Literature,
+    Rallies,
+    Biograms,
+    MemorialPlaces
+  ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],
   }),

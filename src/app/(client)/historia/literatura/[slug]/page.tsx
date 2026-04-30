@@ -1,9 +1,9 @@
 import { BookDetails } from "@/app/(client)/historia/literatura/[slug]/_components/BookDetails";
 import { Chapters } from "@/app/(client)/historia/literatura/[slug]/_components/Chapters";
-import { bookMap } from "@/app/(client)/historia/literatura/_components/data";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs/Breadcrumbs";
 import Container from "@/components/shared/Container";
 import { Heading } from "@/components/shared/Heading/Heading";
+import { fetchBySlug } from "@/dataAccess/fetchPayloadCollection";
 import Image from "next/image";
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
 
 export default async function LiteraturePage({ params }: Props) {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const book = bookMap.get(decodedSlug);
+
+  const { doc: book } = await fetchBySlug("literature", slug);
 
   if (!book) {
     return (

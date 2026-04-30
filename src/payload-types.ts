@@ -71,6 +71,10 @@ export interface Config {
     media: Media;
     news: News;
     galleries: Gallery;
+    calendar: Calendar;
+    literature: Literature;
+    rallies: Rally;
+    biograms: Biogram;
     'memorial-places': MemorialPlace;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -83,6 +87,10 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     galleries: GalleriesSelect<false> | GalleriesSelect<true>;
+    calendar: CalendarSelect<false> | CalendarSelect<true>;
+    literature: LiteratureSelect<false> | LiteratureSelect<true>;
+    rallies: RalliesSelect<false> | RalliesSelect<true>;
+    biograms: BiogramsSelect<false> | BiogramsSelect<true>;
     'memorial-places': MemorialPlacesSelect<false> | MemorialPlacesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -237,7 +245,216 @@ export interface Gallery {
   updatedAt: string;
   createdAt: string;
 }
-
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar".
+ */
+export interface Calendar {
+  id: string;
+  title: string;
+  date: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  featuredImage?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature".
+ */
+export interface Literature {
+  id: string;
+  title: string;
+  author: string;
+  aboutAuthor?: string | null;
+  publisher?: string | null;
+  isbn?: string | null;
+  format?: string | null;
+  /**
+   * Rodzaj okładki (np. miękka, twarda).
+   */
+  cover?: string | null;
+  coverImage?: (string | null) | Media;
+  edition?: string | null;
+  language?: string | null;
+  numberOfPages?: number | null;
+  chapters?:
+    | {
+        chapterTitle?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rallies".
+ */
+export interface Rally {
+  id: string;
+  title: string;
+  /**
+   * Generowany automatycznie na podstawie tytułu.
+   */
+  slug?: string | null;
+  /**
+   * Np. '10 lutego, 2024'
+   */
+  date?: string | null;
+  /**
+   * Opis wyświetlany na liście rajdów
+   */
+  description?: string | null;
+  featuredImage?: (string | null) | Media;
+  /**
+   * Pełny tekst zaproszenia wyświetlany na początku strony rajdu
+   */
+  invite?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Tekst wyświetlany przed listą celów
+   */
+  purpose?: string | null;
+  purposeList?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  rulesList?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  adviceList?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  rewards?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Tekst wyświetlany przed listą informacji o transporcie
+   */
+  transportHeader?: string | null;
+  transportList?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Ważne ostrzeżenia lub informacje dla uczestników
+   */
+  warning?: string | null;
+  programList?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  organizators?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  partners?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Tekst wyświetlany przed listą zadań przedrajdowych
+   */
+  taskInfo?: string | null;
+  tasks?:
+    | {
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  relation?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Galeria zdjęć z rajdu
+   */
+  linkedGallery?: (string | null) | Gallery;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "biograms".
+ */
+export interface Biogram {
+  id: string;
+  name: string;
+  pseudonym?: string | null;
+  birthDate?: string | null;
+  deathDate?: string | null;
+  burialPlace?: string | null;
+  biography?: string | null;
+  portrait?: (string | null) | Media;
+  /**
+   * Generowany automatycznie na podstawie imienia i nazwiska.
+   */
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "memorial-places".
@@ -344,6 +561,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'galleries';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'calendar';
+        value: string | Calendar;
+      } | null)
+    | ({
+        relationTo: 'literature';
+        value: string | Literature;
+      } | null)
+    | ({
+        relationTo: 'rallies';
+        value: string | Rally;
+      } | null)
+    | ({
+        relationTo: 'biograms';
+        value: string | Biogram;
       } | null)
     | ({
         relationTo: 'memorial-places';
@@ -476,7 +709,134 @@ export interface GalleriesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
 }
-
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar_select".
+ */
+export interface CalendarSelect<T extends boolean = true> {
+  title?: T;
+  date?: T;
+  description?: T;
+  featuredImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "literature_select".
+ */
+export interface LiteratureSelect<T extends boolean = true> {
+  title?: T;
+  author?: T;
+  aboutAuthor?: T;
+  publisher?: T;
+  isbn?: T;
+  format?: T;
+  cover?: T;
+  coverImage?: T;
+  edition?: T;
+  language?: T;
+  numberOfPages?: T;
+  chapters?:
+    | T
+    | {
+        chapterTitle?: T;
+        id?: T;
+      };
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rallies_select".
+ */
+export interface RalliesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  date?: T;
+  description?: T;
+  featuredImage?: T;
+  invite?: T;
+  purpose?: T;
+  purposeList?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  rulesList?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  adviceList?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  rewards?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  transportHeader?: T;
+  transportList?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  warning?: T;
+  programList?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  organizators?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  partners?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  taskInfo?: T;
+  tasks?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  relation?: T;
+  linkedGallery?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "biograms_select".
+ */
+export interface BiogramsSelect<T extends boolean = true> {
+  name?: T;
+  pseudonym?: T;
+  birthDate?: T;
+  deathDate?: T;
+  burialPlace?: T;
+  biography?: T;
+  portrait?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "memorial-places_select".

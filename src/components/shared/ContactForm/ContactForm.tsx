@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { FormField } from "@/components/shared/FormField";
 import { Label } from "@/components/shared/Label";
@@ -31,6 +31,13 @@ export const ContactForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const successMessageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isSubmitted && successMessageRef.current) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [isSubmitted]);
 
   const validateForm = (formData: FormData): FormErrors => {
     const errors: FormErrors = {};
@@ -117,7 +124,7 @@ export const ContactForm = ({
 
   if (isSubmitted) {
     return (
-      <div className="rounded-lg bg-greenMain p-6 text-center shadow-lg">
+      <div ref={successMessageRef} className="rounded-lg bg-greenMain p-6 text-center shadow-lg">
         <p className="mb-2 font-lora text-2xl font-bold text-white">
           Dziękujemy za zgłoszenie!
         </p>
@@ -125,7 +132,10 @@ export const ContactForm = ({
           {successMessage}
         </p>
         <button
-          onClick={() => setIsSubmitted(false)}
+          onClick={() => {
+            setIsSubmitted(false);
+            setErrors({});
+          }}
           className="mt-4 text-white underline hover:text-greenLight"
         >
           Wyślij kolejne zgłoszenie

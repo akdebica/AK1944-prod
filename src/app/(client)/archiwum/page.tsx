@@ -15,13 +15,12 @@ type PageProps = {
 
 export default async function ArchivePage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const { docs: posts } = await fetchCollection({ collection: "news" });
+  const currentPage = Number(params.page) || 1;
 
-  const page = parseInt(params.page || "1", 10);
-  const currentPage = isNaN(page) || page < 1 ? 1 : page;
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedData = posts.slice(start, start + ITEMS_PER_PAGE);
-  const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
+  const { docs: posts, totalPages } = await fetchCollection({
+    collection: "news",
+    query: { limit: ITEMS_PER_PAGE, pagination: true, page: currentPage},
+  });
 
   return (
     <section>
@@ -31,11 +30,16 @@ export default async function ArchivePage({ searchParams }: PageProps) {
       >
         <div className="mb-10">
           <Breadcrumbs />
-          <Heading variant="h2" color="green" contrast="yellow" className="mt-6">
+          <Heading
+            variant="h2"
+            color="green"
+            contrast="yellow"
+            className="mt-6"
+          >
             Archiwum
           </Heading>
         </div>
-        <List data={paginatedData} />
+        <List data={posts} />
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

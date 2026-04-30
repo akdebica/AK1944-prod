@@ -2,7 +2,10 @@ import config from "@payload-config";
 import type { Config } from "@/payload-types";
 import { getPayload, type FindArgs } from "payload";
 
-type CollectionMap = Pick<Config["collections"], "news">;
+type CollectionMap = Pick<
+  Config["collections"],
+  "calendar" | "news" | "literature" | "rallies" | "biograms"
+>;
 type CollectionQuery = Pick<
   FindArgs,
   "limit" | "page" | "pagination" | "sort" | "where"
@@ -13,18 +16,13 @@ type CollectionQueries = {
   [K in keyof CollectionMap]: CollectionQuery;
 };
 
-type FetchResult<T> = {
-  docs: T[];
-  error: string | null;
-};
-
 export async function fetchCollection<K extends keyof CollectionMap>({
   collection,
   query,
 }: {
   collection: K;
   query?: CollectionQueries[K];
-}): Promise<FetchResult<CollectionMap[K]>> {
+}) {
   try {
     const payload = await getPayload({ config });
     const result = await payload.find({
@@ -33,7 +31,7 @@ export async function fetchCollection<K extends keyof CollectionMap>({
     });
 
     return {
-      docs: result.docs,
+      ...result,
       error: null,
     };
   } catch (error) {
@@ -41,6 +39,7 @@ export async function fetchCollection<K extends keyof CollectionMap>({
 
     return {
       docs: [],
+      totalPages: 0,
       error: "Błąd podczas pobierania danych.",
     };
   }
