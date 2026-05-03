@@ -14,10 +14,12 @@ export const useFilteredBiograms = (
       return biograms;
     }
 
-    const lowerQuery = searchQuery.toLowerCase();
-    return biograms.filter((biogram) =>
-      biogram.name.toLowerCase().includes(lowerQuery),
-    );
+    const lowerQuery = searchQuery.trim().toLowerCase();
+    return biograms.filter((biogram) => {
+      const nameParts = biogram.name.toLowerCase().split(/\s+/).filter(Boolean);
+
+      return nameParts.some((part) => part.startsWith(lowerQuery));
+    });
   }, [searchQuery, biograms]);
 
   const totalPages = Math.ceil(filteredBiograms.length / ITEMS_PER_PAGE);
