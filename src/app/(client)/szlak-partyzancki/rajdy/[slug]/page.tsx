@@ -7,7 +7,7 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  const rallies = await getRallies();
+  const { rallies } = await getRallies({ limit: 100, pagination: false });
   return rallies.map((rally) => ({
     slug: rally.slug,
   }));

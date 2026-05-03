@@ -17,8 +17,8 @@ export const MemorialContentSection = ({ place }: { place: PlaceDetails }) => (
                 block.align === "center"
                   ? "text-center"
                   : block.align === "left"
-                    ? "text-center"
-                    : "text-center"
+                    ? "text-left"
+                    : "text-right"
               }`}
               style={{
                 fontFamily: "Courier New, Courier, monospace",

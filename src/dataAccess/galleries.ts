@@ -38,17 +38,35 @@ const mapGalleryToGalleryData = (gallery: Gallery): GalleryData => {
   };
 };
 
-export const getGalleries = async (): Promise<GalleryData[]> => {
+type GetGalleriesParams = {
+  limit?: number;
+  page?: number;
+  pagination?: boolean;
+};
+
+export const getGalleries = async ({
+  limit = 4,
+  page = 1,
+  pagination = true,
+}: GetGalleriesParams = {}): Promise<{
+  galleries: GalleryData[];
+  totalPages: number;
+}> => {
   try {
     const payload = await getPayload({ config });
     const result = await payload.find({
       collection: "galleries",
-      limit: 100,
+      limit,
+      page: pagination ? page : undefined,
+      pagination,
       sort: "-publishedAt",
       depth: 2,
     });
     
-    return result.docs.map(mapGalleryToGalleryData);
+    const galleries = result.docs.map(mapGalleryToGalleryData);
+    const totalPages = result.totalPages || 1;
+    
+    return { galleries, totalPages };
   } catch (error) {
     console.error("Error fetching galleries:", error);
     throw error;

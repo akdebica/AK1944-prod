@@ -10,6 +10,7 @@ import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { News } from "./collections/News";
 import { Galleries } from "./collections/Galleries";
+import { MemorialPlaces } from "./collections/MemorialPlaces";
 import { Rallies } from "./collections/Rallies";
 import { Calendar } from "./collections/Calendar";
 import { Literature } from "./collections/Literature";
@@ -43,6 +44,7 @@ export default buildConfig({
     Literature,
     Rallies,
     Biograms,
+    MemorialPlaces
   ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],

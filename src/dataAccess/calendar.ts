@@ -44,13 +44,15 @@ export async function getCalendarMonthData({
   page,
 }: CalendarMonthPageParams) {
   const payload = await getPayload({ config });
-  const result = await payload.find({
+  
+  // Pobierz wszystkie eventy z danego miesiąca (dla allEvents)
+  const allResult = await payload.find({
     collection: "calendar",
     pagination: false,
     sort: "-date",
   });
   const monthDocs = sortEventsByNewest(
-    (result.docs as Calendar[]).filter(
+    (allResult.docs as Calendar[]).filter(
       (doc) => new Date(doc.date).getMonth() + 1 === month,
     ),
   );
@@ -61,15 +63,25 @@ export async function getCalendarMonthData({
     Math.ceil(totalDocs / CALENDAR_ITEMS_PER_PAGE),
   );
   const currentPage = Math.min(Math.max(page, 1), totalPages);
-  const startIndex = (currentPage - 1) * CALENDAR_ITEMS_PER_PAGE;
-  const paginatedDocs = monthDocs.slice(
-    startIndex,
-    startIndex + CALENDAR_ITEMS_PER_PAGE,
+  
+  // Pobierz tylko potrzebne eventy z paginacją
+  const paginatedResult = await payload.find({
+    collection: "calendar",
+    limit: CALENDAR_ITEMS_PER_PAGE,
+    page: currentPage,
+    pagination: true,
+    sort: "-date",
+  });
+  
+  const paginatedMonthDocs = sortEventsByNewest(
+    (paginatedResult.docs as Calendar[]).filter(
+      (doc) => new Date(doc.date).getMonth() + 1 === month,
+    ),
   );
 
   return {
     allEvents: mapCalendarDocsToEvents(monthDocs),
-    events: mapCalendarDocsToEvents(paginatedDocs),
+    events: mapCalendarDocsToEvents(paginatedMonthDocs),
     totalDocs,
     totalPages,
     currentPage,

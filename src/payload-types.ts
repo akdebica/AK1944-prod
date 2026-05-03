@@ -75,6 +75,7 @@ export interface Config {
     literature: Literature;
     rallies: Rally;
     biograms: Biogram;
+    'memorial-places': MemorialPlace;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     literature: LiteratureSelect<false> | LiteratureSelect<true>;
     rallies: RalliesSelect<false> | RalliesSelect<true>;
     biograms: BiogramsSelect<false> | BiogramsSelect<true>;
+    'memorial-places': MemorialPlacesSelect<false> | MemorialPlacesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -455,6 +457,68 @@ export interface Biogram {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memorial-places".
+ */
+export interface MemorialPlace {
+  id: string;
+  name: string;
+  /**
+   * Generowany automatycznie na podstawie nazwy.
+   */
+  slug?: string | null;
+  location: string;
+  /**
+   * Główny opis miejsca pamięci
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  featuredImage?: (string | null) | Media;
+  /**
+   * Teksty do wyróżnienia (np. napisy z tablicy)
+   */
+  highlight?:
+    | {
+        text: string;
+        align?: ('left' | 'center' | 'right') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Dodatkowy opis wyświetlany po wyróżnionych tekstach
+   */
+  descriptionContinuation?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -508,6 +572,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'biograms';
         value: string | Biogram;
+      } | null)
+    | ({
+        relationTo: 'memorial-places';
+        value: string | MemorialPlace;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -761,6 +829,27 @@ export interface BiogramsSelect<T extends boolean = true> {
   biography?: T;
   portrait?: T;
   slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "memorial-places_select".
+ */
+export interface MemorialPlacesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  location?: T;
+  description?: T;
+  featuredImage?: T;
+  highlight?:
+    | T
+    | {
+        text?: T;
+        align?: T;
+        id?: T;
+      };
+  descriptionContinuation?: T;
   updatedAt?: T;
   createdAt?: T;
 }

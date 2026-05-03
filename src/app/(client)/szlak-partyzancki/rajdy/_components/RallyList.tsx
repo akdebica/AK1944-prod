@@ -5,15 +5,18 @@ import { getRallies } from "@/dataAccess/rallies";
 import { Pagination } from "@/components/shared/Pagination";
 import { PageProps } from "@/types";
 
+const ITEMS_PER_PAGE = 4;
+
 export const RallyList = async ({ currentPage }: PageProps) => {
-  const allRallies = await getRallies();
-  const ITEMS_PER_PAGE = 4;
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedRallies = allRallies.slice(start, start + ITEMS_PER_PAGE);
+  const { rallies, totalPages } = await getRallies({
+    limit: ITEMS_PER_PAGE,
+    page: currentPage,
+    pagination: true,
+  });
 
   return (
     <div className="px-4 desktop:px-8">
-      {paginatedRallies.map((rally) => (
+      {rallies.map((rally) => (
         <div
           key={rally.id}
           className="relative grid grid-cols-1 items-center gap-6 tablet:grid-cols-2"
@@ -75,7 +78,7 @@ export const RallyList = async ({ currentPage }: PageProps) => {
       ))}
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(allRallies.length / ITEMS_PER_PAGE)}
+        totalPages={totalPages}
         basePath="/szlak-partyzancki/rajdy"
       />
     </div>
