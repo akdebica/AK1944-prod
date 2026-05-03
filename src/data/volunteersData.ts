@@ -25,12 +25,6 @@ export const volunteersData: Volunteer[] = [
     linkedin: "https://www.linkedin.com/in/piotr-drechsler/",
   },
   {
-    name: "Patryk Domański",
-    role: "Project Manager",
-    photo: "/images/volunteers/P.Domanski.webp",
-    linkedin: "https://www.linkedin.com/in/patrykdomanski/",
-  },
-  {
     name: "Agnieszka Iwan",
     role: "Frontend Developer",
     photo: "/images/volunteers/A.Iwan.webp",
